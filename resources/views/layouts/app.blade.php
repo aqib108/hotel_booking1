@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" 
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 <body class="load">
 <div class="progress-load js-progress-load"></div>
@@ -279,7 +280,18 @@
 <script src="{{ asset('js/script.min.js') }}"></script>
 <script src="{{ asset('js/demo-switcher.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpfWMKfe2_9VO80AfeAfqI3YmEr9DnWE8&libraries=places&callback=initAutocomplete" async defer></script>
+<script>
+    $(document).ready(function() {
+        google.maps.event.addDomListener(window, 'load', initialize);
+    });
 
+    function initialize() {
+        var input = document.getElementById('address');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+</script>
 @yield('customJs')
 
 

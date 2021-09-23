@@ -28,9 +28,9 @@
                         <div class="tab-content">
                             <div class="tab-pane active show" id="hotel" role="tabpanel">
                                 <section>
-                                    <h3 class="fw-md mb-1">First Class Best Room</h3>
+                                    <h3 class="fw-md mb-1">{{ $room->name }}</h3>
                                     <ul class="hotel-title mb-3">
-                                        <li class="stars mb-2">
+                                        <li class="stars mb-2 display-none">
                                             <div class="rating">
                                                 <select class="js-rating-stat" data-current-rating="5">
                                                     <option value="1">1</option>
@@ -42,7 +42,7 @@
                                             </div>
                                         </li>
                                         <li class="d-flex">
-                                            <div class="media-object"><i class="icon icon-label mr-2 text-primary"></i></div>
+                                            <div class="media-object"><i class="fa fa-location"></i></div>
                                             <div class="local"><span>Gulgasht Near Chase-up Multan, Pakistan</span>
                                                 <!--<i class="bullet mx-2"></i>-->
                                                 <a href="#modalMap" class="display-none" data-toggle="modal" data-title="Ravena Best Hotel">Show on map</a>
@@ -52,51 +52,23 @@
                                     <div class="hotel-gallery">
                                         <div class="hotel-gallery__carousel swiper-container js-hotel-carousel">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/1.jpg') }}" alt="#"/>
+                                                @foreach($room->images as $images)
+                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('uploads/hotel/room_images/'.$images->image) }}" alt="#"/>
                                                 </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/2.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/3.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/4.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/5.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/6.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/7.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/8.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/9.jpg') }}" alt="#"/>
-                                                </div>
-                                                <div class="swiper-slide"><img class="img-fluid img-cover" src="{{ asset('images/upload/10.jpg') }}" alt="#"/>
-                                                </div>
+                                                @endforeach
+                                                
+                                                
                                             </div>
                                             <div class="hotel-gallery__controls"><a class="hotel-gallery__arrow shadow-sm js-prev" role="button"><i class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.119 44.237C9.922 44.237 0 34.315 0 22.119S9.922.001 22.119.001s22.119 9.922 22.119 22.118-9.924 22.118-22.119 22.118zm0-42.736C10.75 1.501 1.5 10.75 1.5 22.119c0 11.368 9.25 20.618 20.619 20.618s20.619-9.25 20.619-20.618c0-11.369-9.25-20.618-20.619-20.618z"/><path d="M24.667 29.884a.74.74 0 0 1-.53-.22l-7.328-7.334a.752.752 0 0 1 0-1.061l7.328-7.333a.75.75 0 1 1 1.061 1.061L18.4 21.8l6.798 6.805a.752.752 0 0 1 0 1.061.75.75 0 0 1-.531.218z"/></svg></i></a><a class="hotel-gallery__arrow shadow-sm js-next" role="button"><i class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.118 44.236C9.922 44.236 0 34.314 0 22.118S9.922 0 22.118 0s22.118 9.922 22.118 22.118-9.922 22.118-22.118 22.118zm0-42.736C10.75 1.5 1.5 10.749 1.5 22.118c0 11.368 9.25 20.618 20.618 20.618 11.37 0 20.618-9.25 20.618-20.618 0-11.369-9.248-20.618-20.618-20.618z"/><path d="M19.341 29.884a.75.75 0 0 1-.53-1.281l6.796-6.804-6.796-6.803a.75.75 0 1 1 1.061-1.061l7.325 7.333a.75.75 0 0 1 0 1.061l-7.325 7.333a.742.742 0 0 1-.531.222z"/></svg></i></a></div>
                                         </div>
                                         <div class="hotel-gallery__thumbs swiper-container js-hotel-carousel-thumbs">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/1.jpg') }}" data-description="Joshua Tree Homesteader Cabin"><img class="img-cover" src="{{ asset('images/upload/1.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/2.jpg') }}" data-description="A perfect place to snuggle up after a fun day in Asheville!"><img class="img-cover" src="{{ asset('images/upload/2.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/3.jpg') }}" data-description="A perfect place to snuggle up after a fun day in Asheville!"><img class="img-cover" src="{{ asset('images/upload/3.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/4.jpg') }}" data-description="Underfloor heating in the bathroom floor to keep your toes warm!"><img class="img-cover" src="{{ asset('images/upload/4.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/5.jpg') }}" data-description="Full kitchen with full size refrigerator and dining table"><img class="img-cover" src="{{ asset('images/upload/5.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/6.jpg') }}" data-description="The combination living room and kitchen includes a dining table."><img class="img-cover" src="{{ asset('images/upload/6.jpg') }}" alt="#"/></a></div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/7.jpg') }}" data-description="You'll know you've arrived when you reach the driveway gate.">
-                                                    <img class="img-cover" src="{{ asset('images/upload/7.jpg') }}" alt="#"/></a>
-                                                </div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/8.jpg') }}" data-description="Stone walls and steps compliment the garden area behind the brick patio">
-                                                    <img class="img-cover" src="{{ asset('images/upload/8.jpg') }}" alt="#"/></a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/9.jpg') }}" data-description="Custom-tiled shower, big enough for two people!">
-                                                        <img class="img-cover" src="{{ asset('images/upload/9.jpg') }}" alt="#"/>
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/10.jpg') }}" data-description="View of the backyard parking area as seen from the upstairs unit deck. There is one parking space per unit (one for upstairs, one for downstairs, and one for us in the tiny house in the back!)">
+                                            @foreach($room->images as $images)
+                                            <div class="swiper-slide"><a class="hotel-gallery__thumb js-gallery-link" href="{{ asset('images/upload/10.jpg') }}" data-description="View of the backyard parking area as seen from the upstairs unit deck. There is one parking space per unit (one for upstairs, one for downstairs, and one for us in the tiny house in the back!)">
                                                         <img class="img-cover" src="{{ asset('images/upload/10.jpg') }}" alt="#"/></a>
                                                 </div>
+                                            @endforeach
+                                               
                                             </div>
                                         </div>
                                     </div>

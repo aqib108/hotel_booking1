@@ -10,7 +10,7 @@ use App\Traits\ImageHandleTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File; 
 class RoomController extends Controller
 {
 
@@ -29,7 +29,7 @@ class RoomController extends Controller
             $room->room_capacity = $params['room_capacity'];
             $room->room_type   = $params['room_type'];
             $room->room_price  = $params['room_price'];
-            $room->hotel_id    = Auth::user()->id;
+            $room->hotel_id    = hotelid(Auth::user()->id);
             $room->description = $params['description'];
             $room->status      = 1;
 
@@ -57,7 +57,7 @@ class RoomController extends Controller
                             $facilityObj->facility_name    = $facility['facility_name'];
                             /*$facilityObj->facility_charges = $sibling['facility_charges'];*/
                             $facilityObj->room_id  = $roomId;
-                            $facilityObj->hotel_id = Auth::user()->id;
+                            $facilityObj->hotel_id = hotelid(Auth::user()->id);
                             $facilityObj->save();
                         }
                     }
@@ -77,7 +77,7 @@ class RoomController extends Controller
                     // using custom StorageTrait function
                     // $this->storeImage($image, $imageName, 'room_images');
 
-                    $roomImage->hotel_id = Auth::user()->id;
+                    $roomImage->hotel_id = hotelid(Auth::user()->id);
                     $roomImage->room_id = $roomId;
                     $roomImage->image = $imageName;
                     $roomImage->save();
@@ -101,4 +101,101 @@ class RoomController extends Controller
     {
         return view('pages.roomDetail');
     }
+    ///function delete room
+   function delete(Request $request)
+   {
+    extract($request->all());
+    
+    $Room = new Room;
+    $rm = $Room::find($id);
+    $data = array();
+    if($rm->delete())
+    {
+        if($this->delete_room_images($id))
+        {
+           if($this->delete_room_facilties($id))
+           {
+              $data['status'] = 200;
+              $data['message'] = 'successfully Deleted';
+           }
+           else
+           {
+            $data['status'] = 204;
+            $data['message'] = 'unable to Delete room Facility';
+           }
+        }
+        else
+        {
+            $data['status'] = 200;
+            $data['message'] = 'unable to room Images';
+        }
+    }
+    else
+    {
+        $data['status'] = 200;
+        $data['message'] = 'unable to Delete Room';
+    }
+     return response()->json($data);
+   }
+   function delete_room_images($id)
+   {
+    $RoomImages = new RoomImages;
+    $images = $RoomImages::where('room_id',$id)->get();
+    $cimages = array();
+    foreach($images as $img)
+    {
+        $cimages[]= public_path().'/uploads/hotel/room_images/'.$img->image;
+    }
+    if(File::delete($cimages))
+    {
+       if($RoomImages::where('room_id',$id)->delete())
+       {
+          return true;
+       }
+       else
+       {
+           return false;
+       }
+    }
+    else
+    {
+        return false;
+    }
+
+   }
+   function delete_room_facilties($id)
+   {
+    $RoomFacility = new RoomFacility;
+    if($RoomFacility::where('room_id',$id)->delete())
+    {
+        return true;
+    }   
+    else
+    {
+        return false;
+    }  
+
+   }
+   
+
+    //end of delete room
+
+    //function change room status
+   function changestatus($id,$status)
+   {
+    
+    $rm = new Room;
+    $data['status'] = $status;
+    if($rm::where('id',$id)->update($data))
+    {
+        return back()->with('Message', 'Successfully Change Room Status.');
+    }
+    else
+    {
+        return back()->with('Message', 'unable to change room status.');
+    }
+
+   }
+
+    //end
 }

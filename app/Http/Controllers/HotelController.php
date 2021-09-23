@@ -12,8 +12,9 @@ class HotelController extends Controller
     }
 
 
-    public function roomDetail()
+    public function roomDetail($id)
     {
+        
         return view('pages.roomDetail');
     }
 

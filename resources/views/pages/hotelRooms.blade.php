@@ -12,25 +12,25 @@
                 <!-- Hotel Rooms Sidebar End -->
 
                 <div class="col-lg-9 category-content">
-                    <nav class="sortbar navbar shadow-sm d-flex align-items-stretch">
+                    <nav class="sortbar navbar shadow-sm d-flex align-items-stretch mt-3">
                         <div class="sortbar__title d-flex align-items-stretch">
                             <button class="navbar-brand d-flex align-items-center pointer js-toggle-sidebar" data-target="#sidebarFilter" data-toggle="modal" type="button"><i class="d-lg-none icon icon-filter"></i><span class="ml-2 d-none d-lg-inline">Sort by:</span></button>
                         </div>
                         <div class="sortbar__sort js-sorting d-flex align-items-stretch">
-                            <a class="nav-link " href="#">Popularity</a>
-                            <a class="nav-link" href="#">Price</a>
+                            <a class="nav-link  display-none" href="#">Popularity</a>
+                            <a class="nav-link  display-none" href="#">Price</a>
                             <a class="nav-link display-none" href="#">Stars</a>
                             <a class="nav-link display-none" href="#">Rating</a>
                             <a class="nav-link d-flex d-md-none align-items-center" href="#"><span class="mr-2">Sort by</span><i class="icon icon-sort-duble"></i></a></div>
                         <div class="sortbar__grid d-flex align-items-stretch ml-md-auto"><a class="nav-link active js-toggle-grid" href="#" data-grid="grid" data-cols="col-12 col-sm-6 col-xl-4 d-flex"><i class="fas fa-th-large"></i></a><a class="nav-link js-toggle-grid" href="#" data-grid="list" data-cols="col-12 d-flex"><i class="fas fa-th-list"></i></a></div>
                     </nav>
                     <div class="category-content__items row pad-lg-20">
-
-                        @for($i=0; $i<6; $i++)
+                         
+                        @foreach($rooms as $room)
                         <div class="col-12 col-sm-6 col-xl-4 d-flex">
                             @include('layouts.roomGridListDesign')
                         </div>
-                        @endfor
+                        @endforeach
 
 
                         <div class="col-12 banner-list">
@@ -73,26 +73,7 @@
                     </div>
 
                     <nav class="pagination-nav" aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fab fa-angle-double-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item align-self-end d-sm-none"><a class="dotted" href="#">......</a>
-                            </li>
-                            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a>
-                            </li>
-                            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">5</a>
-                            </li>
-                            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">6</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">7</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">8</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
+                        {{$rooms->links()}}
                     </nav>
                 </div>
             </div>

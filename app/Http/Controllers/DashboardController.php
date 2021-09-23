@@ -17,10 +17,19 @@ class DashboardController extends Controller
             
             if(Auth::user()->user_type == 3)
             {
-                $hotelId = Auth::user()->id;
+                $hotelId = hotelId(Auth::user()->id);
 
                 $roomsObj = new Room();
-                $rooms = $roomsObj->getAllRoomsOfHotel($hotelId);
+                if($hotelId!=0)
+                {
+                    $rooms = $roomsObj->getAllRoomsOfHotel($hotelId);
+                }
+                else
+                {
+                    $rooms = array();
+                }
+               
+                
                 $data['rooms'] = $rooms;
                 $data['profile'] = Hotel::where('user_id',Auth::user()->id)->get();
                 //  dd($rooms->facilities);

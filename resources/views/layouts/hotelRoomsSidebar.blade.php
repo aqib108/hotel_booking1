@@ -1,4 +1,4 @@
-<aside class="sidebar col-lg-3 order-1 order-lg-0">
+<aside class="sidebar col-lg-3 order-1 order-lg-0 mt-3">
     <div class="sidebar__content js-sticky-top">
         <div class="sidebar-filter modal card fade" id="sidebarFilter" tabindex="-1" role="dialog">
             <button class="btn-toggle btn btn-light" type="button" data-dismiss="modal"><span class="icon-bar"></span></button>

@@ -124,6 +124,7 @@
   
   function deletedata(id,url)
   {
+   
 ///sweetalert
 var formData = new FormData();
      formData.append('id',id);

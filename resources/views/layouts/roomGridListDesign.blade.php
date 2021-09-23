@@ -1,9 +1,9 @@
 <div class="product bg-white js-grid-item">
-    <div class="product__special bg-primary text-white">special price
-    </div><a class="product__img-top d-block" href="/room-detail"><img class="img-fluid" src="{{ asset('images/hotels/item-15.jpg') }}" alt="#"/></a>
+    <div class="product__special bg-primary text-white bg-style">special price
+    </div><a class="product__img-top d-block" href="{{ route('roomsDetails',$room->id) }}"><img class="img-fluid" src="{{  asset('uploads/hotel/room_images/'.$room->images[0]->image) }}" alt="#"/></a>
     <div class="product__body">
-        <h4 class="product__title"><a href="hotel.html">Outstanding Room</a></h4>
-        <div class="product__rating mb-2">
+        <h4 class="product__title"><a href="{{ route('roomsDetails',$room->id) }}"> {{ $room->name }}</a></h4>
+        <div class="product__rating mb-2 display-none">
             <div class="rating">
                 <select class="js-rating-stat" data-current-rating="5">
                     <option value="1">1</option>
@@ -16,7 +16,7 @@
         </div>
         <ul class="product__stat d-flex flex-wrap justify-content-between align-items-center">
             <li class="mr-3">
-                <span>Gulgast Near Chase-up Multan</span>
+                <span>{{ hotelAddress($room->hotel_id) }}</span>
                 <!--<i class="bullet"></i>-->
                 <a class="display-none" href="#modalMap" data-toggle="modal" data-title="Al Moggar Garden Beach Club">
                     Show on map
@@ -27,12 +27,12 @@
         <hr/>
         <ul class="product__price d-flex justify-content-between align-items-center">
             <li class="mr-2"><span>Price per night from</span></li>
-            <li><span class="cost">Rs. 2000</span>
+            <li><span class="cost">Rs. {{ $room->room_price }}</span>
             </li>
         </ul>
         <hr/>
         <div class="product__desc">
-            <p>The air-conditioned rooms have a balcony with views of the sea or the garden. Each spacious room has a TV with satellite channels. The private bathrooms at the... </p><a class="product__link-more" href="hotel.html">Read more</a>
+            <p>{{$room->description}} </p><a class="product__link-more" href="{{ route('roomsDetails',$room->id) }}">Read more</a>
         </div>
     </div>
     <hr class="d-none d-sm-block"/>
@@ -41,6 +41,6 @@
             <li class="mr-2"><span>Price per night from</span></li>
             <li><span class="cost">Rs. 2000</span>
             </li>
-        </ul><a class="product__btn-book btn btn-secondary btn--round" href="booking-traveler.html">book now</a>
+        </ul><a class="product__btn-book btn btn-secondary btn--round bg-style" href="booking-traveler.html">book now</a>
     </div>
 </div>

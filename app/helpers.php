@@ -9,6 +9,30 @@ use Illuminate\Support\Facades\DB;
 function changeDateFormate($date,$date_format){
     return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format($date_format);    
 }
+function hotelid($id)
+{
+  $data = DB::table('hotels')->where('user_id',$id)->get()[0];
+    if($data)
+    {
+       return $data->id;
+    }
+    else
+    {
+      return 0;
+    }
+}
+function hotelAddress($id)
+{
+  $data = DB::table('hotels')->where('id',$id)->get()[0];
+    if($data)
+    {
+       return $data->address;
+    }
+    else
+    {
+      return 'Not Found';
+    }
+}
 function checkhotelprofile($id)
 {
   $c=0;
@@ -33,4 +57,6 @@ return 'active';
 }
 
 }
+
+
 ?>

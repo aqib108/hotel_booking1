@@ -34,10 +34,11 @@ Route::get('/hotels', [App\Http\Controllers\HotelControllers\HotelController::Cl
 
 Route::post('/save-details', [HotelDetails::class, 'save'])->name('save-details');
 
-Route::get('/hotel-rooms', [App\Http\Controllers\HotelControllers\HotelController::Class, 'hotelRooms'])->name('hotel-rooms');
+Route::get('/hotel-rooms/{id}', [App\Http\Controllers\HotelControllers\HotelController::Class, 'hotelRooms'])->name('hotel-rooms');
+Route::get('/roomsDetails/{id}', [App\Http\Controllers\HotelControllers\HotelController::Class, 'roomsDetails'])->name('roomsDetails');
 
-Route::get('/room-detail', [HotelController::Class, 'roomDetail'])->name('room-detail');
-
+Route::get('/room-detail/{id}', [HotelController::Class, 'roomDetail'])->name('room-detail');
+Route::get('/room-status/{id}/{status}', [App\Http\Controllers\HotelControllers\RoomController::Class, 'changestatus'])->name('room-status');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -62,9 +63,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::post('/add/new/room', [App\Http\Controllers\HotelControllers\RoomController::class, 'create'])->name('create-room');
-
+Route::post('/delete-room', [App\Http\Controllers\HotelControllers\RoomController::class, 'delete'])->name('delete-room');
 Route::get('/room-detail', [App\Http\Controllers\HotelControllers\RoomController::Class, 'singleRoomDetail'])->name('room-detail');
 Route::post('/savesocial', [Setting::class, 'save_socail_setting'])->name('savesociald');
+
 
 //end of admin routes
 

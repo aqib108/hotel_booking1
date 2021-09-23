@@ -14,6 +14,11 @@ else
 // print_r($profile);
 // echo $profile->name;
                                 ?>
+ <style>
+ .nav-link.active{
+     background-color: #003580 !important;
+ }
+ </style>                              
     <div class="page-content">
         <div class="container">
             <div class="row">
@@ -466,8 +471,9 @@ else
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-md-12 order-1 order-md-0">
+
                                                     @foreach($data['rooms'] as $room)
-                                                        <div class="hotel-package mb-4">
+                                                        <div id="room_{{ $room->id }}" class="hotel-package mb-4">
                                                             <div class="hotel-package__row row mb-4">
                                                                 <div class="col-6 pr-md-1">
                                                                     <a class="hotel-package__img d-block" href="#">
@@ -489,7 +495,7 @@ else
                                                                     </span><span class="cost fw-bold">Rs. {{ $room->room_price }} </span>
                                                                         </li>
                                                                         <li class="mb-2 prepayment"><span class="title mr-1">Room Type:</span><span class="fw-bold">{{ $room->room_type }}</span></li>
-                                                                        <li class="mb-2 guests"><span class="title mr-1">Status :</span> @if($room->status==1) <span class="badge badge-success">Active</span> @else <span class="badge badge-danger" > InActive </span> @endif </li>
+                                                                        <li class="mb-2 guests"><span class="title mr-1">Status :</span> @if($room->status==1) <span class="badge badge-success"> Active</span> @else <span class="badge badge-danger" > InActive </span> @endif </li>
                                                                     </ul>
                                                                     <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
                                                                 </div>
@@ -508,11 +514,24 @@ else
                                                                       
                                                                      
                                                                     </ul>
+                                                                    <h5 class="mb-3 fw-bold">Action</h5>
+                                                                    <ul class="hotel-package__options list-inline" style="display: inline-flex;" >
+                                                                    <li><span><button onclick="deleteroom({{$room->id}})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></span></li>
+                                                                    <li class="px-2"> @if($room->status==1) 
+                                                                   <span><a href="{{route('room-status',[$room->id,0])}}" id="disable" class="btn btn-xs btn-danger">Disable</a> </span>
+                                                                    @else
+                                                                   <span><a href="{{route('room-status',[$room->id,1])}}" id="enble" class="btn btn-xs btn-danger">Enable</a></span>
+                                                                    @endif
+                                                                    </li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                             <hr class="hr-bottom my-0">
                                                         </div>
                                                     @endforeach
+                                                    <div>
+                                                    {{ $data['rooms']->links() }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 hotel-items__check display-none">
                                                     <div class="py-3 js-sticky-top">
@@ -1868,6 +1887,70 @@ else
                 $(this).closest('.row').remove(); x--;
             });
         });
+
+        //function delete room
+   function deleteroom(id)
+   {
+    ///sweetalert
+var formData = new FormData();
+     formData.append('id',id);
+    
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this Room",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    ///start ajaxcode
+    $.ajax({
+      type: "POST",
+      url: 'delete-room',
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: 'JSON',
+       beforeSend:function(){
+            $('#btnloader').addClass('spinner-border spinner-border-sm');
+       },
+      success: function(data) {
+      
+        if(data.status==200)
+        {
+            swal({
+  title: "Success!",
+  text: "You Room Was Successfully Removed!",
+  icon: "success",
+  button: "Aww yiss!",
+});
+            $('#room_'+id).hide('slow');      
+        }
+        if(data.status==204)
+        {
+          swal(data.message);
+        }
+      
+            }
+      });
+
+  //ajax end
+
+    ///end of ajaxcode
+
+  } else {
+  ///  swal("Your imaginary file is safe!");
+  }
+});
+//end of sweetalert
+  
+ /// return false;
+   
+   }
+        //end of delete room
     </script>
 
 @endsection

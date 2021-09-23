@@ -12,7 +12,7 @@
 </style>
 
 <header  class="page-header">
-
+<meta name="csrf-token" content="{{ csrf_token() }}" /> 
     <div class="panel-fixed">
         <div  class="page-header__top bg-white js-header-top js-top-panel bg-style">
             <div class="container" >

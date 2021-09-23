@@ -48,12 +48,16 @@ class HotelDetails extends Controller
         $this->model->exists = true;
         $this->model->id = $profile_id;
     }
+    else
+    {
+        $this->model->status = 0;
+    }
     $this->model->name = $name;
     $this->model->Price_range = $Price_range;
     $this->model->description = $description;
     $this->model->address = $address;
     $this->model->phone = $phone;
-    $this->model->status = 0;
+   
     $this->model->user_id = Auth::user()->id;
     $this->model->email = $email;
     $this->model->city = $city;
@@ -65,18 +69,15 @@ class HotelDetails extends Controller
         $imageName = time() . '-' . $image->getClientOriginalName();
         $file->move(public_path('uploads/hotel_profile/'),$imageName);  
     }
-    if(!empty($profile_id) && empty($image))
-    {
-
-    }
+   
    elseif(!empty($profile_id) && !empty($image))
     {
   //     dd('come');  
      $this->model->thumbnail = $imageName;
     }
-    else
+    elseif(empty($profile_id) && !empty($image))
     {
-     $imageName = null;
+        $this->model->thumbnail = $imageName;
     }
  
     if($this->model->save())
