@@ -1,0 +1,20 @@
+$facilities = array
+(
+'Wi-Fi',
+'24-hour front desk',
+'Air conditioning',
+'Food and beverage delivery to the room',
+'Free parking',
+'Non-smoking rooms',
+'Pets Allowed',
+'Special diet menus',
+'Children's TV channels',
+'Children's room',
+'Breakfast in the room',
+'Restaurant',
+'Daily cleaning',
+'Ironing Service',
+'Dry Cleaning',
+'Laundry',
+'Luggage office'
+)

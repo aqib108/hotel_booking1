@@ -203,7 +203,6 @@ else
                                             <hr class="mb-4">
                                     <div class="hotel-card">
                                         <h5>Most popular facilities</h5>
-                             
                                         <?php $facilities = array
 (
 'Wi-Fi',
@@ -229,9 +228,25 @@ else
                                             <li class="mr-2"><input type="checkbox" value="{{ $f }}" name="facility_name[]"  /><span  class="align-middle ml-2">{{$f}}</span><i class="bullet d-none d-md-inline-block"></i></li>
                                         @endforeach
                                         </ul>
-                                        <span><input type="checkbox" id="checkAll" /><b>Check All</b></span>           
-                                    </div>
                                         
+                                    </div>
+                                        <div class="col-12 append_facility_row_init display-none">
+
+                                            <div class="row">
+                                                <div class="col-10 col-md-5 form-group">
+                                                    <label class="label-text ml-3" for="facility_name">Facility Name</label>
+                                                    <input class="form-control" id="facility_name" type="text" name="facilities[0][facility_name]" required="required"  placeholder="Facility Name"/>
+                                                </div>
+                                                {{--<div class="col-12 col-md-5 form-group">
+                                                    <label class="label-text ml-3" for="facility_charges">Facility Charges</label>
+                                                    <input class="form-control" id="facility_charges" type="text" name="facilities[0][facility_charges]" required="required"/>
+                                                </div>--}}
+                                                <div class="col-2 col-md-1">
+                                                    <label class="label-text ml-3" for="facility_name">&nbsp;</label>
+                                                    <button type="button" class="btn btn-success btn-xs add-facility add-facilit-btn"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-12 text-right mt-40">
                                             <button class="btn btn-sm btn-info">Submit</button>
@@ -1965,13 +1980,6 @@ swal({
    
    }
         //end of delete room
-    
-    ///checkbox checked
-    $("#checkAll").click(function(){
-    $('input:checkbox').not(this).prop('checked', this.checked);
-});
-
-    //end
     </script>
 
 @endsection

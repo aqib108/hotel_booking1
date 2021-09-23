@@ -47,14 +47,14 @@ class RoomController extends Controller
                 $roomId = $room->id;
 
                 // deal with Family => Siblings
-                if(!empty($params['facilities']))
+                if(!empty($params['facility_name']))
                 {
-                    foreach ($params['facilities'] as $facility)
+                    foreach ($params['facility_name'] as $facility)
                     {
-                        if(!empty($facility['facility_name']))
+                        if(!empty($facility))
                         {
                             $facilityObj = new RoomFacility();
-                            $facilityObj->facility_name    = $facility['facility_name'];
+                            $facilityObj->facility_name    = $facility;
                             /*$facilityObj->facility_charges = $sibling['facility_charges'];*/
                             $facilityObj->room_id  = $roomId;
                             $facilityObj->hotel_id = hotelid(Auth::user()->id);
