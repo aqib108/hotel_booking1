@@ -18,3 +18,17 @@ $facilities = array
 'Laundry',
 'Luggage office'
 )
+$roomtype = array(
+'Single',
+'Double',
+'Twin-Double',
+'Triple',
+'Quad',
+'Triple',
+'Family',
+'Suite',
+'Studio',
+'Dorm Room',
+'Bed in Dorm Room',
+
+)
