@@ -641,15 +641,7 @@ $roomtype = array(
                                 </section>                                                                    <!--room update form-->
 
                                                                     <!--end of room update form-->
-                                                                    <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                                    <ul class="hotel-package__options list-inline">
-                                                                    @foreach($room->facilities as $f)
-                                                                    <li><span>{{ $f->facility_name	 }}</span></li>
-                                                                    @endforeach
-                                                                      
-                                                                     
-                                                                    </ul>
-                                                                    <h5 class="mb-3 fw-bold">Action</h5>
+                                                                   
                                                                     <ul class="hotel-package__options list-inline" style="display: inline-flex;" >
                                                                     <li><span><button onclick="deleteroom({{$room->id}})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></span></li>
                                                                     <li class="px-2"> @if($room->status==1) 
