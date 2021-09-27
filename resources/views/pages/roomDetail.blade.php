@@ -550,16 +550,22 @@
                                <h3 class="fw-md">Book Your Room</h3>
                                     <hr class="mb-4">
                                     <div class="hotel-checklist hotel-card">
-                                        <form method="post" action="{{ route('save-details') }}" enctype="multipart/form-data" >
+                                        <form method="post" action="{{ route('booking-room') }}" enctype="multipart/form-data" >
                                         @csrf
+                                        <input type="hidden" name="room_id" value="{{ $room->id }}" />
+                                        <input type="hidden" name="hotel_id" value="{{ $hotelId }}" />
                                             <div class="form-group">
                                           <label>Name</label>
-                                            <input type="text" class="form-control" name="name" id="name" value="<?php if(!empty($profile)) echo $profile->name;  ?>" />
+                                            <input type="text" class="form-control" name="name" id="name"  />
                                             
                                             </div>
                                             <div class="form-group">
                                           <label>Phone No</label>
-                                            <input type="text" class="form-control" name="phone" id="phone" value="<?php if(!empty($profile)) echo $profile->phone;  ?>" />
+                                            <input type="text" class="form-control" name="phone" id="phone"  />
+                                            </div>
+                                            <div class="form-group">
+                                          <label>Cnic</label>
+                                            <input type="text" class="form-control" name="cnic" id="cnic"  />
                                             </div>
                                             <div class="form-group">
                                           <label>Email (optional)</label>
@@ -568,7 +574,7 @@
                                         
                                             <div class="form-group">
                                           <label>Hotel Address</label>
-                                            <input type="text" class="form-control" name="address" id="address" value="<?php if(!empty($profile)) echo $profile->address;  ?>" />
+                                            <input type="text" class="form-control" name="address" id="address" />
                                             </div>
                                             <div class="form-group">
                                           <label>From Date</label>
@@ -576,12 +582,12 @@
   </div>
   <div class="form-group">
                                           <label>to Date</label>
-                                      <input type="date" name="from_date" id="from_date" class="form-control" />
+                                      <input type="date" name="to_date" id="to_date" class="form-control" />
   </div>
   
   
   
-  <input type="hidden" name="profile_id"  id="profile_id" />
+  
                                         <input type="submit" id="btnsubmit" class="mbtn" style="cursor: pointer;" name="btnsubmit" value="Submit" />
                                         </form> 
                                </section>

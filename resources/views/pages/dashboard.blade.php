@@ -697,7 +697,50 @@ $roomtype = array(
                                     <hr class="mb-4">
                                     <div class="hotel-card">
                                         <h4>Today Booking</h4>
-                                        
+                                      
+                                        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Cnic</th>
+      <th scope="col">Address</th>
+      <th scope="col">Room Title</th>
+      <th scope="col">Room Type</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php $i=1; ?>
+@foreach($data['booking'] as $bk)
+    <tr>
+      <th scope="row">{{ $i++ }}</th>
+      <td>{{ $bk->name }}</td>
+      <td>{{ $bk->phone }}</td>
+      <td>{{ $bk->cnic }}</td>
+      <td>{{ $bk->address }}</td>
+      <td>{{ $bk->room_title }}</td>
+      <td>{{ $bk->room_type }}</td>
+      <td>
+      @if($bk->status==0)
+      <span class="badge badge-primary">Pending</span>
+      @elseif($bk->status==1)
+      <span class="badge badge-secondary">Approved</span>
+      @elseif($bk->status==2)
+      <span class="badge badge-info">On Going</span>
+      @elseif($bk->status==3)
+      <span class="badge badge-dark">Compeleted</span>
+      @else
+      <span class="badge badge-dark">Compeleted</span>
+      @endif
+      </td>
+      <td><button class="btn btn-x btn-outline-success">Success</button></td>
+    </tr>
+@endforeach
+  </tbody>
+</table>
                                        
                                     </div>
                                     <div class="hotel-card">
@@ -1892,12 +1935,7 @@ swal({
       
         if(data.status==200)
         {
-//             swal({
-//   title: "Success!",
-//   text: "You Room Was Successfully Removed!",
-//   icon: "success",
-//   button: "Aww yiss!",
-// });
+
           $('#images_'+id+room_id).hide('slow');      
         }
         if(data.status==204)

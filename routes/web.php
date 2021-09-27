@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Hotels\HotelDetails;
-
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +69,11 @@ Route::post('/savesocial', [Setting::class, 'save_socail_setting'])->name('saves
 Route::post('/delete-room-image', [App\Http\Controllers\HotelControllers\RoomController::class, 'delete_room_image'])->name('delete-room-image');
 Route::post('/update/room', [App\Http\Controllers\HotelControllers\RoomController::class, 'update_room'])->name('update-room');
 //end of admin routes
+///booking room
+Route::post('/booking-room', [BookingController::class, 'Room_Booking'])->name('booking-room');
+
+
+//end of booking_room
 
 ///admin controller
 
