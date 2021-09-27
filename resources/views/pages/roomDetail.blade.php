@@ -5,13 +5,13 @@
         <div class="container">
             <div class="row">
 
-                <aside class="sidebar col-lg-3">
+                <aside class="sidebar col-lg-3 display-none">
                     <!-- Room Detail Sidebar Start -->
                      @include('layouts.roomDetailSidebar')
                     <!-- Room Detail Sidebar End -->
                 </aside>
 
-                <div class="col-lg-9" id="barba-wrapper">
+                <div class="col-lg-12" id="barba-wrapper">
                     <div class="barba-container">
                         <nav class="hotel-nav">
                             <ul class="hotel-nav__menu nav nav-tabs" role="tablist">

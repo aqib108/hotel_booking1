@@ -11,7 +11,7 @@ function changeDateFormate($date,$date_format){
 }
 function hotelid($id)
 {
-  $data = DB::table('hotels')->where('user_id',$id)->get()[0];
+  $data = DB::table('hotels')->where('user_id',$id)->get()->first();
     if($data)
     {
        return $data->id;
