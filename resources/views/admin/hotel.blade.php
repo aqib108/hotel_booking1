@@ -111,19 +111,7 @@
                  
                   
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>#</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Images</th>
-                
-                    <th>Created At</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
+                 
                 </table>
               </div>
               </div>

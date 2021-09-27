@@ -7,11 +7,8 @@
         <div class="container">
             <div class="row">
 
-                <!-- Hotel Rooms Sidebar Start -->
-                @include('layouts.hotelRoomsSidebar')
-                <!-- Hotel Rooms Sidebar End -->
-
-                <div class="col-lg-9 category-content">
+              
+                <div class="col-lg-12 category-content">
                     <nav class="sortbar navbar shadow-sm d-flex align-items-stretch mt-3">
                         <div class="sortbar__title d-flex align-items-stretch">
                             <button class="navbar-brand d-flex align-items-center pointer js-toggle-sidebar" data-target="#sidebarFilter" data-toggle="modal" type="button"><i class="d-lg-none icon icon-filter"></i><span class="ml-2 d-none d-lg-inline">Sort by:</span></button>
