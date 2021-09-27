@@ -19,7 +19,7 @@
                                 </li>
                                 <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#hotelServices" role="tab" aria-controls="hotelServices" aria-selected="true"><span>Facilities &amp; Services</span></a>
                                 </li>
-                                <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#hotelAccommodation" role="tab" aria-controls="hotelAccommodation" aria-selected="true"><span>Accommodation conditions</span></a>
+                                <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#hotelAccommodation" role="tab" aria-controls="hotelAccommodation" aria-selected="true"><span>Book Room</span></a>
                                 </li>
                                 <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#hotelReviews" role="tab" aria-controls="hotelReviews" aria-selected="true"><span>Guest reviews</span></a>
                                 </li>
@@ -64,7 +64,7 @@
                                                 
                                                 
                                             </div>
-                                            <div class="hotel-gallery__controls"><a class="hotel-gallery__arrow shadow-sm js-prev" role="button"><i class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.119 44.237C9.922 44.237 0 34.315 0 22.119S9.922.001 22.119.001s22.119 9.922 22.119 22.118-9.924 22.118-22.119 22.118zm0-42.736C10.75 1.501 1.5 10.75 1.5 22.119c0 11.368 9.25 20.618 20.619 20.618s20.619-9.25 20.619-20.618c0-11.369-9.25-20.618-20.619-20.618z"/><path d="M24.667 29.884a.74.74 0 0 1-.53-.22l-7.328-7.334a.752.752 0 0 1 0-1.061l7.328-7.333a.75.75 0 1 1 1.061 1.061L18.4 21.8l6.798 6.805a.752.752 0 0 1 0 1.061.75.75 0 0 1-.531.218z"/></svg></i></a><a class="hotel-gallery__arrow shadow-sm js-next" role="button"><i class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.118 44.236C9.922 44.236 0 34.314 0 22.118S9.922 0 22.118 0s22.118 9.922 22.118 22.118-9.922 22.118-22.118 22.118zm0-42.736C10.75 1.5 1.5 10.749 1.5 22.118c0 11.368 9.25 20.618 20.618 20.618 11.37 0 20.618-9.25 20.618-20.618 0-11.369-9.248-20.618-20.618-20.618z"/><path d="M19.341 29.884a.75.75 0 0 1-.53-1.281l6.796-6.804-6.796-6.803a.75.75 0 1 1 1.061-1.061l7.325 7.333a.75.75 0 0 1 0 1.061l-7.325 7.333a.742.742 0 0 1-.531.222z"/></svg></i></a></div>
+                                            <div class="hotel-gallery__controls"><a class="hotel-gallery__arrow shadow-sm js-prev" role="button"><i class="icon" style="color: #003580;"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.119 44.237C9.922 44.237 0 34.315 0 22.119S9.922.001 22.119.001s22.119 9.922 22.119 22.118-9.924 22.118-22.119 22.118zm0-42.736C10.75 1.501 1.5 10.75 1.5 22.119c0 11.368 9.25 20.618 20.619 20.618s20.619-9.25 20.619-20.618c0-11.369-9.25-20.618-20.619-20.618z"/><path d="M24.667 29.884a.74.74 0 0 1-.53-.22l-7.328-7.334a.752.752 0 0 1 0-1.061l7.328-7.333a.75.75 0 1 1 1.061 1.061L18.4 21.8l6.798 6.805a.752.752 0 0 1 0 1.061.75.75 0 0 1-.531.218z"/></svg></i></a><a class="hotel-gallery__arrow shadow-sm js-next" role="button"><i class="icon" style="    color: #003580;"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 44 44"><path d="M22.118 44.236C9.922 44.236 0 34.314 0 22.118S9.922 0 22.118 0s22.118 9.922 22.118 22.118-9.922 22.118-22.118 22.118zm0-42.736C10.75 1.5 1.5 10.749 1.5 22.118c0 11.368 9.25 20.618 20.618 20.618 11.37 0 20.618-9.25 20.618-20.618 0-11.369-9.248-20.618-20.618-20.618z"/><path d="M19.341 29.884a.75.75 0 0 1-.53-1.281l6.796-6.804-6.796-6.803a.75.75 0 1 1 1.061-1.061l7.325 7.333a.75.75 0 0 1 0 1.061l-7.325 7.333a.742.742 0 0 1-.531.222z"/></svg></i></a></div>
                                         </div>
                                         <div class="hotel-gallery__thumbs swiper-container js-hotel-carousel-thumbs">
                                             <div class="swiper-wrapper">
@@ -307,15 +307,13 @@
                                     <div class="hotel-card">
                                         <h5>Most popular facilities</h5>
                                         <ul class="hotel-facilities d-flex flex-wrap flex-column flex-md-row mb-3">
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-wifi mr-2"></i><span class="align-middle mr-2">Wi-Fi</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-24-hours mr-2"></i><span class="align-middle mr-2">24-hour front desk</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-freezer mr-2"></i><span class="align-middle mr-2">Air conditioning</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-food mr-2"></i><span class="align-middle mr-2">Food and beverage delivery to the room</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-parking mr-2"></i><span class="align-middle mr-2">Free parking</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-no-smoking mr-2"></i><span class="align-middle mr-2">Non-smoking rooms</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                            <li class="mr-2"><i class="align-middle icon text-secondary icon-pets mr-2"></i><span class="align-middle mr-2">Pets Allowed</span><i class="bullet d-none d-md-inline-block"></i></li>
+                                        @foreach($room->facilities as $fa)
+                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-wifi mr-2"></i><span class="align-middle mr-2">{{ $fa->facility_name }}</span><i class="bullet d-none d-md-inline-block"></i></li>
+                                                               @endforeach
+                                       
+                                           
                                         </ul>
-                                        <div class="row">
+                                        <div class="row display-none">
                                             <div class="col-12 col-sm-6">
                                                 <div class="hotel-service mb-4">
                                                     <div class="hotel-service__title d-flex mb-3"><i class="icon icon-dinner mr-2"></i>
@@ -534,7 +532,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="hotel-card">
+                                    <div class="hotel-card display-none">
                                         <h4 class="mb-4">Several reasons to choose accommodation option Hotel Ravena</h4>
                                         <ul class="hotel-options row">
                                             <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>Reasonable prices</span></li>
@@ -547,69 +545,47 @@
                                 </section>
                             </div>
                             <div class="tab-pane" id="hotelAccommodation" role="tabpanel">
-                                <section>
-                                    <h3 class="fw-md">Accommodation conditions</h3>
+                               <section>
+                                  
+                               <h3 class="fw-md">Book Your Room</h3>
                                     <hr class="mb-4">
                                     <div class="hotel-checklist hotel-card">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-calendar mr-2"></i>Check-in:</h5>
+                                        <form method="post" action="{{ route('save-details') }}" enctype="multipart/form-data" >
+                                        @csrf
+                                            <div class="form-group">
+                                          <label>Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" value="<?php if(!empty($profile)) echo $profile->name;  ?>" />
+                                            
                                             </div>
-                                            <div class="col-12 col-sm-8">
-                                                <p>From 15:00 hours</p>
+                                            <div class="form-group">
+                                          <label>Phone No</label>
+                                            <input type="text" class="form-control" name="phone" id="phone" value="<?php if(!empty($profile)) echo $profile->phone;  ?>" />
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-calendar mr-2"></i>Check-out:</h5>
+                                            <div class="form-group">
+                                          <label>Email (optional)</label>
+                                            <input type="email" class="form-control" name="email" id="email" value="<?php if(!empty($profile)) echo $profile->email;  ?>" />
                                             </div>
-                                            <div class="col-12 col-sm-8">
-                                                <p>15:00 hours</p>
+                                        
+                                            <div class="form-group">
+                                          <label>Hotel Address</label>
+                                            <input type="text" class="form-control" name="address" id="address" value="<?php if(!empty($profile)) echo $profile->address;  ?>" />
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-info mr-2"></i>Cancellation / prepayment</h5>
-                                            </div>
-                                            <div class="col-12 col-sm-8">
-                                                <p>Cancellation and prepayment policies vary by room category. <a href="#">Please enter the dates of your stay </a>and read the booking conditions for the requested room.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-family mr-2"></i>Accommodation of children</h5>
-                                            </div>
-                                            <div class="col-12 col-sm-8">
-                                                <p>All children are welcome.</p>
-                                                <p><span class="mark bg-primary-light"><span class="bold">strong Is free!  </span>One child under 2 years stays free of charge in a baby cot.</span></p>
-                                                <p>Maximum capacity of extra beds / babycots in a room is 1.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-pets mr-2"></i>Pets</h5>
-                                            </div>
-                                            <div class="col-12 col-sm-8">
-                                                <p>Pets are allowed on request. This service can be paid.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-4">
-                                                <h5 class="title d-flex"><i class="icon icon-credits mr-2"></i>Accepted for payment</h5>
-                                            </div>
-                                            <div class="col-12 col-sm-8">
-                                                <ul class="hotel-checklist__payment">
-                                                    <li class="d-inline-block mr-2 mb-2"><img src="{{ asset('images/american-express.jpg') }}" alt="american-express"></li>
-                                                    <li class="d-inline-block mr-2 mb-2"><img src="{{ asset('images/visa.jpg') }}" alt="visa"></li>
-                                                    <li class="d-inline-block mr-2 mb-2"><img src="{{ asset('images/master-card.jpg') }}" alt="master-card"></li>
-                                                    <li class="d-inline-block mr-2 mb-2"><img src="{{ asset('images/maestro.jpg') }}" alt="maestro"></li>
-                                                    <li class="d-inline-block mr-2 mb-2"><img src="{{ asset('images/discover.jpg') }}" alt="discover"></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="hotel-popular">
+                                            <div class="form-group">
+                                          <label>From Date</label>
+                                      <input type="date" name="from_date" id="from_date" class="form-control" />
+  </div>
+  <div class="form-group">
+                                          <label>to Date</label>
+                                      <input type="date" name="from_date" id="from_date" class="form-control" />
+  </div>
+  
+  
+  
+  <input type="hidden" name="profile_id"  id="profile_id" />
+                                        <input type="submit" id="btnsubmit" class="mbtn" style="cursor: pointer;" name="btnsubmit" value="Submit" />
+                                        </form> 
+                               </section>
+                                <section class="hotel-popular display-none">
                                     <h3>Popular hotels in the area</h3>
                                     <hr class="mb-4">
                                     <div class="row">
