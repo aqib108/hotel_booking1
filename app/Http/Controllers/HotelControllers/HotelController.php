@@ -26,7 +26,8 @@ class HotelController extends Controller
     function roomsDetails($id)
     {
         $roomsObj = new Room();
-        $hotelId = hotelid(Auth::user()->id);
+        $hotelId = getspecficedata($id,'hotel_id','id','rooms');
+     
         $room = $roomsObj->getActiveRoomsOfHotel($id);
         $allrooms = $roomsObj->getAllActiveRoomsOfHotel($hotelId);   
         return view('pages.roomDetail',compact('room','allrooms','hotelId'));   
