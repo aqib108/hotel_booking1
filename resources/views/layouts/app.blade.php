@@ -241,7 +241,7 @@
                 <button class="btn btn-secondary btn--round px-4" type="button" data-dismiss="modal">map close
                 </button>
             </div>
-            <div class="map-contain" id="map"></div>
+            <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe><a href="http://www.gps.ie/">gps systems</a></div>
         </div>
     </div>
 </div>
@@ -292,6 +292,17 @@
     function initialize() {
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+    function mapopenmodal(address,name)
+    {
+    //alert(address);
+     url1="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q="+address;
+     url2 = "+("+name+")&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"; 
+     url = url1+url2;
+    
+    $("#mapframe").attr("src",url);
+    $('#modalMap').modal('show');
+    
     }
 </script>
 @yield('customJs')
