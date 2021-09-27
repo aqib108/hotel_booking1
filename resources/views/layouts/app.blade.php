@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" 
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="load">
 <div class="progress-load js-progress-load"></div>
@@ -241,7 +241,7 @@
                 <button class="btn btn-secondary btn--round px-4" type="button" data-dismiss="modal">map close
                 </button>
             </div>
-            <div class="map-contain" id="map"></div>
+            <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe><a href="http://www.gps.ie/">gps systems</a></div>
         </div>
     </div>
 </div>
@@ -280,16 +280,29 @@
 <script src="{{ asset('js/script.min.js') }}"></script>
 <script src="{{ asset('js/demo-switcher.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpfWMKfe2_9VO80AfeAfqI3YmEr9DnWE8&libraries=places&callback=initAutocomplete" async defer></script>
 <script>
     $(document).ready(function() {
         google.maps.event.addDomListener(window, 'load', initialize);
+        $('.fancybox').fancybox();
     });
-
+   
     function initialize() {
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+    function mapopenmodal(address,name)
+    {
+    //alert(address);
+     url1="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q="+address;
+     url2 = "+("+name+")&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"; 
+     url = url1+url2;
+    
+    $("#mapframe").attr("src",url);
+    $('#modalMap').modal('show');
+    
     }
 </script>
 @yield('customJs')

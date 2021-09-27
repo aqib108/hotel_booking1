@@ -163,11 +163,33 @@ else
                                                 <label class="label-text ml-3" for="room_capacity">Room Capacity</label>
                                                 <input class="form-control" id="room_capacity" type="text" name="room_capacity" required="required"  placeholder="Room Capacity"/>
                                             </div>
-
+<?php
+$roomtype = array(
+    'Single',
+    'Double',
+    'Twin-Double',
+    'Twin',
+    'Triple',
+    'Quad',
+    'Triple',
+    'Family',
+    'Suite',
+    'Studio',
+    'Dorm Room',
+    'Bed in Dorm Room',
+    
+    )
+?>
 
                                             <div class="col-12 col-sm-6 col-lg-3 form-group">
                                                 <label class="label-text ml-3" for="room_type">Room Type</label>
-                                                <input class="form-control" id="room_type" type="text" name="room_type" required="required"  placeholder="Room Type" />
+                                                <select name="room_type" id="room_type" class="form-control">
+                                                <option>Room Type</option>
+                                                @foreach($roomtype as $rt)
+                                                <option value="{{$rt}}">{{$rt}}</option>
+                                                @endforeach
+                                                </select>
+                                               
                                             </div>
 
                                             <div class="col-12 col-sm-6 col-lg-3 form-group">
@@ -516,19 +538,110 @@ else
                                                             </div>
                                                             <div class="collapse js-addition">
                                                                 <div class="hotel-package__more">
-                                                                    <!-- <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                                    <ul class="hotel-package__menu">
-                                                                        <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                                    </ul> -->
-                                                                    <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                                    <ul class="hotel-package__options list-inline">
-                                                                    @foreach($room->facilities as $f)
-                                                                    <li><span>{{ $f->facility_name	 }}</span></li>
-                                                                    @endforeach
-                                                                      
-                                                                     
-                                                                    </ul>
-                                                                    <h5 class="mb-3 fw-bold">Action</h5>
+                                                                <section>
+                                    <h3 class="fw-md mb-1">Modify Your Room</h3>
+
+                                    <form action="{{ route('update-room') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                   <input type="hidden" name="room_id" value="{{ $room->id }}" >
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 col-lg-3 form-group">
+                                                <label class="label-text ml-3" for="hotelInDate">Room Name</label>
+                                                <input class="form-control" id="room_name" type="text" name="room_name" required="required" value="{{ $room->name }}" placeholder="Room Name" />
+                                            </div>
+
+                                            <div class="col-12 col-sm-6 col-lg-3 form-group">
+                                                <label class="label-text ml-3" for="room_capacity">Room Capacity</label>
+                                                <input class="form-control" id="room_capacity" type="text" name="room_capacity" required="required" value="{{ $room->room_capacity }}"  placeholder="Room Capacity"/>
+                                            </div>
+
+
+                                            <div class="col-12 col-sm-6 col-lg-3 form-group">
+                                                <label class="label-text ml-3" for="room_type">Room Type</label>
+                                                <select name="room_type" id="room_type" class="form-control">
+                                                <option>Room Type</option>
+                                                @foreach($roomtype as $rt)
+                                                @if($rt==$room->room_type)
+                                                <option selected value="{{$rt}}">{{$rt}}</option>
+                                                @else
+                                                <option  value="$rt">{{$rt}}</option>
+                                                @endif 
+                                                @endforeach
+                                                </select>
+                                               
+                                            </div>
+
+                                            <div class="col-12 col-sm-6 col-lg-3 form-group">
+                                                <label class="label-text ml-3" for="room_price">Room Price</label>
+                                                <input class="form-control" id="room_price" type="text" name="room_price" required="required" value="{{$room->room_price}}"  placeholder="Room Price" />
+                                            </div>
+
+
+                                            <div class="col-12 form-group">
+                                                <label class="label-text ml-3" for="description">Description</label>
+                                                {{--<input class="form-control" id="description" type="text" name="description" required="required"/>--}}
+                                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Type Room Description...">
+                                                {{$room->description}}
+                                                </textarea>
+                                            </div>
+
+                                            <div class="col-12 col-sm-6 col-lg-12 form-group">
+                                                <label for="" class="ml-5px">Select Images </label>
+                                                <input type="file" id="fileupload" name="room_images[]" class="btn btn-primary form-control" multiple  accept="image/*">
+                                            </div>
+                                            
+                                            <div class="row">
+                                            
+                                            @foreach($room->images as $rm)
+                                            <div class="col-md-4 px-3" id="images_{{$rm->id.$rm->room_id}}">
+                                            <span class=" btn-sm btn-outline-danger" onclick="deleteimage('{{$rm->id}}','{{$rm->room_id}}')"  toggle="Removed Image" style="position: absolute;"><i class="fa fa-times"></i></span>
+                                            <a href="{{ asset('uploads/hotel/room_images/'.$rm->image) }}" class="fancybox"><img  src="{{ asset('uploads/hotel/room_images/'.$rm->image) }}" style="height: 100px; width: 100px" alt="#"/></a>
+                                          
+                                            </div>
+                                            @endforeach
+                                            </div>
+
+                                            <!-- <div class="col-12" id="dvPreview{{$room->id}}">
+
+                                            </div> -->
+
+
+                                        </div>
+
+
+                                            <div class="col-12">
+                                                <h4>Add Room Facilities (Optional)</h4>
+                                            </div>
+                                            <hr class="mb-4">
+                                    <div class="hotel-card">
+                                        <h5>Most popular facilities</h5>
+                             
+                                        <?php 
+                                        $checkfacilities = array_column($room->facilities->toArray(),'facility_name');
+                                        // print_r( $checkfacilities);
+                                        ?>
+                                        <ul class="hotel-facilities d-flex flex-wrap flex-column flex-md-row mb-3">
+                                        @foreach($facilities as $f)
+                                        @if(in_array($f,$checkfacilities))
+                                            <li class="mr-2"><input checked="true" type="checkbox" value="{{ $f }}" name="facility_name[]"  /><span  class="align-middle ml-2">{{$f}}</span><i class="bullet d-none d-md-inline-block"></i></li>
+                                        @else
+                                            <li class="mr-2"><input type="checkbox" value="{{ $f }}" name="facility_name[]"  /><span  class="align-middle ml-2">{{$f}}</span><i class="bullet d-none d-md-inline-block"></i></li>
+                                       @endif
+                                        @endforeach
+                                        </ul>
+                                        <span><input type="checkbox" id="checkAll" /><b>Check All</b></span>           
+                                    </div>
+                                        
+
+                                        <div class="col-12 text-right mt-40">
+                                            <button class="btn btn-sm btn-info">Update</button>
+                                        </div>
+                                    </form>
+
+                                </section>                                                                    <!--room update form-->
+
+                                                                    <!--end of room update form-->
+                                                                   
                                                                     <ul class="hotel-package__options list-inline" style="display: inline-flex;" >
                                                                     <li><span><button onclick="deleteroom({{$room->id}})" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></span></li>
                                                                     <li class="px-2"> @if($room->status==1) 
@@ -1972,6 +2085,71 @@ swal({
 });
 
     //end
+
+    //delete image
+
+
+    //end of delete image
+    function deleteimage(id,room_id)
+    {
+          ///sweetalert
+var formData = new FormData();
+     formData.append('id',id);
+     formData.append('room_id',room_id);
+    
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this Image",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    ///start ajaxcode
+    $.ajax({
+      type: "POST",
+      url: "{{ route('delete-room-image') }}",
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: 'JSON',
+       beforeSend:function(){
+            $('#btnloader').addClass('spinner-border spinner-border-sm');
+       },
+      success: function(data) {
+      
+        if(data.status==200)
+        {
+//             swal({
+//   title: "Success!",
+//   text: "You Room Was Successfully Removed!",
+//   icon: "success",
+//   button: "Aww yiss!",
+// });
+          $('#images_'+id+room_id).hide('slow');      
+        }
+        if(data.status==204)
+        {
+          swal(data.message);
+        }
+      
+            }
+      });
+
+  //ajax end
+
+    ///end of ajaxcode
+
+  } else {
+  ///  swal("Your imaginary file is safe!");
+  }
+});
+//end of sweetalert
+  
+    }
     </script>
 
 @endsection

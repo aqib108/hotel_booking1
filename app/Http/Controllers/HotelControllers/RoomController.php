@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
 use Illuminate\Support\Facades\File; 
+use DB;
 class RoomController extends Controller
 {
 
@@ -198,4 +199,94 @@ class RoomController extends Controller
    }
 
     //end
+    function delete_room_image(Request $request)
+    {
+        $arr = array();
+        extract($request->all());
+        $RoomImages = new RoomImages;
+        $images = $RoomImages::where('id',$id)->get()->first();
+    
+        $cimages= public_path().'/uploads/hotel/room_images/'.$images->image;
+        
+        if(File::delete($cimages))
+        {
+           if($RoomImages::where('id',$id)->delete())
+           {
+              $arr['message'] = 'success removed Image';
+              $arr['status'] = 200;
+           }
+           else
+           {
+            $arr['message'] = 'unable to delete image from database';
+            $arr['status'] = 200;
+           }
+        }
+        else
+        {
+            $arr['message'] = 'unable to unlink image';
+            $arr['status'] = 200;
+        }
+          return response()->json($arr);
+    }
+
+    function update_room(Request $request)
+    {
+      ///update room
+      
+         extract($request->all());
+         $id = $room_id;
+   $room = Room::find($id);
+   if(!empty($room))
+   {
+        $room->name = $room_name;
+        $room->room_capacity = $room_capacity;
+        $room->room_type = $room_type;
+        $room->room_price = $room_price;
+        $room->description = $description;
+        if($room->save())
+        {
+            if(!empty($facility_name))
+            {
+                $facilityObj = new RoomFacility();
+                $facilityObj::where('room_id',$id)->delete();
+                foreach ($facility_name as $facility)
+                {
+                    $facilities[] = array(
+                        'facility_name'=>$facility,
+                        'room_id'=>$id,
+                        'hotel_id'=>hotelid(Auth::user()->id)
+                    );
+                    
+                }
+                DB::table('room_facilities')->insert($facilities); 
+            }
+            $roomImages = $request->file('room_images');
+            if(!empty($roomImage))
+            {
+                foreach ($roomImages as $image)
+                {
+                    $roomImage = new RoomImages();
+    
+                    // $imageName = time() . '-' . $image->getClientOriginalName();
+                    $imageName = time() . '-' . $image->getClientOriginalName();
+                    $image->move(public_path('uploads/hotel/room_images/'),$imageName);
+                    // using custom StorageTrait function
+                    // $this->storeImage($image, $imageName, 'room_images');
+    
+                    $roomImage->hotel_id = hotelid(Auth::user()->id);
+                    $roomImage->room_id = $id;
+                    $roomImage->image = $imageName;
+                    $roomImage->save();
+                }
+            }
+            
+            return back()->with('Message', 'Successfully Update your room');
+        }
+        else
+        {
+            return back()->with('ErrorMessage', 'Sorry! Something went wrong not saved');            
+        }
+   }
+      //end of update room
+    }
 }

@@ -66,8 +66,8 @@ Route::post('/add/new/room', [App\Http\Controllers\HotelControllers\RoomControll
 Route::post('/delete-room', [App\Http\Controllers\HotelControllers\RoomController::class, 'delete'])->name('delete-room');
 Route::get('/room-detail', [App\Http\Controllers\HotelControllers\RoomController::Class, 'singleRoomDetail'])->name('room-detail');
 Route::post('/savesocial', [Setting::class, 'save_socail_setting'])->name('savesociald');
-
-
+Route::post('/delete-room-image', [App\Http\Controllers\HotelControllers\RoomController::class, 'delete_room_image'])->name('delete-room-image');
+Route::post('/update/room', [App\Http\Controllers\HotelControllers\RoomController::class, 'update_room'])->name('update-room');
 //end of admin routes
 
 ///admin controller

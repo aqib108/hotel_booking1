@@ -57,6 +57,20 @@ return 'active';
 }
 
 }
+function getspecficedata($id,$gfeild_name,$sfeild_name,$table_name="")
+{
 
+    $query = DB::table($table_name)
+    ->select('*')->where($sfeild_name,$id);
+$data =  $query->get()->first();
+if(!empty($data))
+{
+    return $data->$gfeild_name;
+}
+else{
+    return '000';
+      
+}
 
+}
 ?>

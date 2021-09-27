@@ -42,10 +42,15 @@
                                             </div>
                                         </li>
                                         <li class="d-flex">
+                                        <?php 
+                                        $hotel_address = getspecficedata($hotelId,'address','id','hotels');
+                                        $hotel_name = getspecficedata($hotelId,'name','id','hotels');
+
+                                        ?>
                                             <div class="media-object"><i class="fa fa-location"></i></div>
-                                            <div class="local"><span>Gulgasht Near Chase-up Multan, Pakistan</span>
+                                            <div class="local"><span>{{ $hotel_address }}</span>
                                                 <!--<i class="bullet mx-2"></i>-->
-                                                <a href="#modalMap" class="display-none" data-toggle="modal" data-title="Ravena Best Hotel">Show on map</a>
+                                                <a  onclick="mapopenmodal('{{$hotel_address}}','{{$hotel_name}}')">Show on map</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -77,22 +82,20 @@
                                         <div class="col-12 col-md-12 d-flex">
                                             <div class="hotel__intro hotel-card w-100">
                                                 <section class="pb-4">
-                                                    <h5 class="d-flex align-items-center text-primary mb-3"><i class="icon icon-badge mr-2"></i>One of the best hotels in Milan by customer recall</h5>
-                                                    <p>Hotel Ravena is located in a park of 8,000 square meters. meters. There is a restaurant and private parking. The hotel is located on the outskirts of Milan, 150 meters from Bruzzzo Train Station with direct connection to the city center.</p>
-                                                    <p>The modern, 4-star Ravena Hotel offers spacious and elegant rooms with free Wi-Fi, air conditioning, a minibar and a flat-screen TV with international channels, as well as a spacious bathroom decorated with mosaic tiles.</p>
-                                                    <p>The Ravena has a bar and several meeting rooms for up to 1000 people.</p>
-                                                    <p>Hotel Ravena is located near the large Nord park, about 9 km from the historic center of Milan. The exhibition center "Ro Fiera Milano" can be reached in about 10 minutes. Comasina Metro Station is 700 meters away.</p>
-                                                    <p>Here the best value for money in Milan! Compared with other options in this city, guests receive more for the same money.</p>
+                                                    <h5 class="d-flex align-items-center text-primary mb-3"><i class="fa fa-badge mr-2"></i>One of the best hotels in Pakistan by customer recall</h5>
+                                                <p>{{ getspecficedata($hotelId,'description','id','hotels') }}</p>
+                                                   
                                                 </section>
                                                 <section>
                                                     <h5>Popular services in the hotel</h5>
-                                                    <ul class="hotel-facilities d-flex flex-wrap flex-column flex-md-row">
-                                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-wifi mr-2"></i><span class="align-middle mr-2">Wi-Fi</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-24-hours mr-2"></i><span class="align-middle mr-2">24-hour front desk</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-freezer mr-2"></i><span class="align-middle mr-2">Air conditioning</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-food mr-2"></i><span class="align-middle mr-2">Food and beverage delivery to the room</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                                        <li class="mr-2"><i class="align-middle icon text-secondary icon-parking mr-2"></i><span class="align-middle mr-2">Free parking</span><i class="bullet d-none d-md-inline-block"></i></li>
-                                                    </ul>
+                                                   
+                                                    <ul class="hotel-package__options list-inline">
+                                                               @foreach($room->facilities as $fa)
+                                                                <li><span>{{$fa->facility_name}}</span></li>
+                                                               @endforeach
+                                       
+                                                            </ul>
+                                                    
                                                 </section>
                                             </div>
                                         </div>
@@ -231,335 +234,55 @@
                                         <div class="row">
                                             <div class="col-12 col-md-12 order-1 order-md-0">
 
+                    
+                                               
+                                               
+                                                
+                                              @foreach($allrooms as $aroom)
                                                 <div class="hotel-package mb-4">
                                                     <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1">
-                                                            <a class="hotel-package__img d-block" href="#">
-                                                                <img class="img-fluid" src="{{ asset('images/hotels/item-15.jpg') }}" alt="#"/>
-                                                            </a>
-                                                        </div>
+                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="{{ route('roomsDetails',$aroom->id) }}"><img class="img-fluid" src="{{ asset('uploads/hotel/room_images/'.$aroom->images[0]->image) }}" alt="#"/></a></div>
                                                         <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Triple room</h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                          <option value="rooms 3">3</option>
-                                        </select></span>
-                                                                </li>
-                                                                <li class="mb-2 price">
-                                                                    <span class="title mr-2">Price for 13 nights:</span>
-                                                                    <span class="d-inline-block display-none pointer point-fade sale" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="hover" data-placement="bottom">
-                                                                        1485 € <i class="hint" data-title="?"></i>
-                                                                    </span><span class="cost fw-bold">1 286 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment"><span class="title mr-1">Prepayment:</span><span class="fw-bold">30%</span></li>
-                                                                <li class="mb-2 guests"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
+                                                                    <h4 class="hotel-package__title d-inline-block">{{ $aroom->name }}</h4>
+                                                                    <ul class="hotel-package__props">
+                                                                    <li class="mb-2 price">
+                                                                            <span class="title mr-2">Capcity:</span>
+                                                                            <span class="d-inline-block display-none pointer point-fade sale" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="hover" data-placement="bottom">
+                                                                            <i class="hint" data-title="?"></i>
+                                                                    </span><span class="cost fw-bold">{{ $aroom->room_capacity}} Persons </span>
+                                                                        <li class="mb-2 price">
+                                                                            <span class="title mr-2">Price for night:</span>
+                                                                            <span class="d-inline-block display-none pointer point-fade sale" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="hover" data-placement="bottom">
+                                                                            <i class="hint" data-title="?"></i>
+                                                                    </span><span class="cost fw-bold">Rs. {{ $aroom->room_price }} </span>
+                                                                        </li>
+                                                                        <li class="mb-2 prepayment"><span class="title mr-1">Room Type:</span><span class="fw-bold">{{ $aroom->room_type }}</span></li>
+                                                                        <li class="mb-2 guests"><span class="title mr-1">Status :</span> @if($aroom->status==1) <span class="badge badge-success"> Active</span> @else <span class="badge badge-danger" > InActive </span> @endif </li>
+                                                                    </ul>
+                                                                    <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
+                                                                </div>
                                                     </div>
                                                     <div class="collapse js-addition">
                                                         <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
+                                                            <p class="mb-2">{{ $aroom->description }}</p>
+                                                            <!-- <ul class="hotel-package__menu">
                                                                 <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
+                                                            </ul> -->
                                                             <h5 class="mb-3 fw-bold">Room Facilities</h5>
                                                             <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
+                                                               @foreach($aroom->facilities as $fa)
+                                                                <li><span>{{$fa->facility_name}}</span></li>
+                                                               @endforeach
+                                       
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <hr class="hr-bottom my-0">
                                                 </div>
-                                                <div class="hotel-package mb-4">
-                                                    <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="#"><img class="img-fluid" src="{{ asset('images/hotels/item-16.jpg')  }}" alt="#"/></a></div>
-                                                        <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Quadruple Room</h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                          <option value="rooms 3">3</option>
-                                          <option value="rooms 4">4</option>
-                                        </select></span>
-                                                                </li>
-                                                                <li class="mb-2 price"><span class="title mr-2">Price for 13 nights:</span><span class="cost fw-bold">1 982 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment"><span class="title mr-1">Prepayment:</span><span class="fw-bold">30%</span></li>
-                                                                <li class="mb-2 guests"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
+                                                  @endforeach
+                                                  <div>
+                                                    {{ $allrooms->links() }}
                                                     </div>
-                                                    <div class="collapse js-addition">
-                                                        <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
-                                                                <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
-                                                            <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                            <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-bottom my-0">
-                                                </div>
-                                                <div class="hotel-package mb-4">
-                                                    <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="#"><img class="img-fluid" src="{{ asset('images/hotels/item-17.jpg') }}" alt="#"/></a></div>
-                                                        <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Junior Suite</h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                          <option value="rooms 3">3</option>
-                                          <option value="rooms 4">4</option>
-                                        </select></span>
-                                                                </li>
-                                                                <li class="mb-2 price"><span class="title mr-2">Price for 13 nights:</span><span class="cost fw-bold">2 690 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment"><span class="title mr-1">Prepayment:</span><span class="fw-bold">25%</span></li>
-                                                                <li class="mb-2 guests"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="collapse js-addition">
-                                                        <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
-                                                                <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
-                                                            <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                            <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-bottom my-0">
-                                                </div>
-                                                <div class="hotel-package mb-4">
-                                                    <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="#"><img class="img-fluid" src="{{ asset('images/hotels/item-18.jpg') }}" alt="#"/></a></div>
-                                                        <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Suite</h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                          <option value="rooms 3">3</option>
-                                          <option value="rooms 4">4</option>
-                                        </select></span>
-                                                                </li>
-                                                                <li class="mb-2 price"><span class="title mr-2">Price for 13 nights:</span><span class="cost fw-bold">2 690 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment"><span class="title mr-1">Prepayment:</span><span class="fw-bold">20%</span></li>
-                                                                <li class="mb-2 guests"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="collapse js-addition">
-                                                        <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
-                                                                <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
-                                                            <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                            <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-bottom my-0">
-                                                </div>
-                                                <div class="hotel-package mb-4">
-                                                    <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="#"><img class="img-fluid" src="{{ asset('images/hotels/item-18.jpg') }}" alt="#"/></a></div>
-                                                        <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Superior Double Room </h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                        </select></span>
-                                                                </li>
-                                                                <li class="mb-2 price"><span class="title mr-2">Price for 13 nights:</span><span class="cost fw-bold">850 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment"><span class="title mr-1">Prepayment:</span><span class="fw-bold">40%</span></li>
-                                                                <li class="mb-2 guests"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="collapse js-addition">
-                                                        <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
-                                                                <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
-                                                            <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                            <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-bottom my-0">
-                                                </div>
-                                                <div class="hotel-package mb-4">
-                                                    <div class="hotel-package__row row mb-4">
-                                                        <div class="col-6 pr-md-1"><a class="hotel-package__img d-block" href="#"><img class="img-fluid" src="{{ asset('images/hotels/item-18.jpg') }}" alt="#"/></a></div>
-                                                        <div class="col-6">
-                                                            <h4 class="hotel-package__title d-inline-block">Double Room</h4>
-                                                            <ul class="hotel-package__props">
-                                                                <li class="mb-2 rooms disabled"><span class="title mr-1">Rooms:</span><span class="form-select form-select--sm">
-                                        <select class="form-control select2 js-form-select">
-                                          <option value="rooms 1">1</option>
-                                          <option value="rooms 2">2</option>
-                                        </select></span><span class="d-inline-block pointer point-fade" data-toggle="popover" data-content="And here's some amazing content.
-                    It's very engaging. Right?" data-trigger="hover" data-placement="bottom">No rooms available<i class="hint" data-title="?"></i></span>
-                                                                </li>
-                                                                <li class="mb-2 price"><span class="title mr-2">Price for 13 nights:</span><span class="cost fw-bold">650 €</span>
-                                                                </li>
-                                                                <li class="mb-2 prepayment disabled"><span class="title mr-1">Prepayment:</span><span class="fw-bold">40%</span></li>
-                                                                <li class="mb-2 guests disabled"><span class="title mr-1">Max guests:</span><span><i class="icon icon-user mr-1"></i><i class="icon icon-user mr-1"></i></span></li>
-                                                            </ul>
-                                                            <button class="btn-more fw-bold text-primary pointer point-fade js-hotel-show-more" type="button">More info +</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="collapse js-addition">
-                                                        <div class="hotel-package__more">
-                                                            <p class="mb-2">The room has 1 single bed and 1 extra large double bed</p>
-                                                            <ul class="hotel-package__menu">
-                                                                <li class="d-flex align-items-center mb-2"><i class="mr-2 icon icon-coffee-cup text-primary"></i><span class="mt-1 fw-sm">Breakfast is included in the room rate.</span></li>
-                                                            </ul>
-                                                            <h5 class="mb-3 fw-bold">Room Facilities</h5>
-                                                            <ul class="hotel-package__options list-inline">
-                                                                <li><span>Pay-per-view TV</span></li>
-                                                                <li><span>Telephone</span></li>
-                                                                <li><span>Radio</span></li>
-                                                                <li><span>Satellite TV</span></li>
-                                                                <li><span>Safety Deposit Box</span></li>
-                                                                <li><span>Work Desk</span></li>
-                                                                <li><span>Heating</span></li>
-                                                                <li><span>Carpeted Floor</span></li>
-                                                                <li><span>Wardrobe / Closet</span></li>
-                                                                <li><span>Shower</span></li>
-                                                                <li><span>Hairdryer</span></li>
-                                                                <li><span>Complimentary Toiletries</span></li>
-                                                                <li><span>Toilet</span></li>
-                                                                <li><span>Bidet</span></li>
-                                                                <li><span>Minibar</span></li>
-                                                                <li><span>Wake Up Service</span></li>
-                                                                <li><span>Towels</span></li>
-                                                                <li><span>Linen</span></li>
-                                                                <li><span>For access to the upper floors there is an elevator</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="hr-bottom my-0">
-                                                </div>
-
                                             </div>
                                             <div class="col-12 col-md-4 hotel-items__check display-none">
                                                 <div class="py-3 js-sticky-top">

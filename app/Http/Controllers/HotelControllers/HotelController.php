@@ -5,6 +5,7 @@ use App\Traits\ImageHandleTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
+use Auth;
 
 class HotelController extends Controller
 {
@@ -25,8 +26,9 @@ class HotelController extends Controller
     function roomsDetails($id)
     {
         $roomsObj = new Room();
+        $hotelId = hotelid(Auth::user()->id);
         $room = $roomsObj->getActiveRoomsOfHotel($id);
-        
-        return view('pages.roomDetail',compact('room'));   
+        $allrooms = $roomsObj->getAllActiveRoomsOfHotel($hotelId);   
+        return view('pages.roomDetail',compact('room','allrooms','hotelId'));   
     }
 }
