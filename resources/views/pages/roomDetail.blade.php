@@ -977,7 +977,7 @@
                                     <h3 class="fw-md">Guest reviews</h3>
                                     <hr class="mb-4">
                                     <div class="hotel-checklist hotel-card">
-                                        <form method="post" action="{{ route('booking-room') }}" enctype="multipart/form-data" >
+                                        <form method="post" action="{{ route('add-review') }}" enctype="multipart/form-data" >
                                         @csrf
                                         <input type="hidden" name="room_id" value="{{ $room->id }}" />
                                         <input type="hidden" name="hotel_id" value="{{ $hotelId }}" />

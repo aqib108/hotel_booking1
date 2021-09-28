@@ -8,6 +8,7 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Hotels\HotelDetails;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +75,11 @@ Route::post('/booking-room', [BookingController::class, 'Room_Booking'])->name('
 Route::post('/change-booking-status', [BookingController::class, 'change_status'])->name('change-booking-status');
 
 //end of booking_room
+//review controller
+Route::post('/add-review', [ReviewController::class, 'create_review'])->name('add-review');
+
+
+//end of review controller
 
 ///admin controller
 
