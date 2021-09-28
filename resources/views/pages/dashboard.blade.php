@@ -708,6 +708,8 @@ $roomtype = array(
       <th scope="col">Address</th>
       <th scope="col">Room Title</th>
       <th scope="col">Room Type</th>
+      <th scope="col">From Date</th>
+      <th scope="col">To Date</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -723,6 +725,8 @@ $roomtype = array(
       <td>{{ $bk->address }}</td>
       <td>{{ $bk->room_title }}</td>
       <td>{{ $bk->room_type }}</td>
+      <td>{{ $bk->from_date }}</td>
+      <td>{{ $bk->to_date }}</td>
       <td>
       @if($bk->status==0)
       <span class="badge badge-primary">Pending</span>
@@ -736,7 +740,36 @@ $roomtype = array(
       <span class="badge badge-dark">Compeleted</span>
       @endif
       </td>
-      <td><button class="btn btn-x btn-outline-success">Success</button></td>
+      <td>
+      <ul style="display: flex;">
+          <li style="    margin-right: 10px;">
+          <button class="btn-xs btn-outline" style="cursor: pointer;"><i class="fa fa-trash"></i></button>
+          </li>
+          <li>
+              <?php
+      $status = array(
+          0=>'Pending',
+          1=>'Approved',
+          2=>'On Going',
+          3=>'Compeleted'
+    
+          )
+              ?>
+          <select style="border: none;" claas="form-control">
+          @foreach($status as $key=>$value)
+          @if($bk->status==$key)
+          <option selected value="{{$key}}">{{ $value }}</option>
+          @else
+          <option  value="{{$key}}">{{ $value }}</option>
+          @endif
+          @endforeach
+          </select>
+          </li>
+      </ul>
+     
+      
+    
+    </td>
     </tr>
 @endforeach
   </tbody>
