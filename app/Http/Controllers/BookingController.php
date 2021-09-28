@@ -52,4 +52,24 @@ class BookingController extends Controller
 
 
     }
+    function change_status(Request $request)
+    {
+       extract($request->all());
+       $bk = Booking::find($id);
+       if($bk)
+       {
+           $bk->status = $status;
+           if($bk->save())
+           {
+             $arr['status'] = 200;
+             $arr['message'] = 'Successfully Update Booking Status';
+           }
+           else
+           {
+            $arr['status'] = 204;
+            $arr['message'] = 'Something went to Wrong';
+           }
+       }
+       return response()->json($arr);
+    }
 }

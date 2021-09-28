@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.structure.min.css ') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" />
     <link id="cssRtl" rel="stylesheet" href="#">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/font-awesome.min.css') }}">
@@ -282,6 +283,10 @@
 <script src="{{ asset('js/script.min.js') }}"></script>
 <script src="{{ asset('js/demo-switcher.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<!--adding for some more extra style-->
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<!--end of for some more extra style-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpfWMKfe2_9VO80AfeAfqI3YmEr9DnWE8&libraries=places&callback=initAutocomplete" async defer></script>

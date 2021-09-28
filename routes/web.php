@@ -71,7 +71,7 @@ Route::post('/update/room', [App\Http\Controllers\HotelControllers\RoomControlle
 //end of admin routes
 ///booking room
 Route::post('/booking-room', [BookingController::class, 'Room_Booking'])->name('booking-room');
-
+Route::post('/change-booking-status', [BookingController::class, 'change_status'])->name('change-booking-status');
 
 //end of booking_room
 

@@ -698,7 +698,7 @@ $roomtype = array(
                                     <div class="hotel-card">
                                         <h4>Today Booking</h4>
                                       
-                                        <table class="table">
+                                        <table id="example" class="table table-striped table-bordered" style="width:100%">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -736,26 +736,29 @@ $roomtype = array(
       <span class="badge badge-info">On Going</span>
       @elseif($bk->status==3)
       <span class="badge badge-dark">Compeleted</span>
+      @elseif($bk->status==4)
+      <span class="badge badge-warning">Cancel</span>
       @else
       <span class="badge badge-dark">Compeleted</span>
       @endif
       </td>
       <td>
       <ul style="display: flex;">
-          <li style="    margin-right: 10px;">
+          <!-- <li style="    margin-right: 10px;">
           <button class="btn-xs btn-outline" style="cursor: pointer;"><i class="fa fa-trash"></i></button>
-          </li>
+          </li> -->
           <li>
               <?php
       $status = array(
           0=>'Pending',
           1=>'Approved',
           2=>'On Going',
-          3=>'Compeleted'
+          3=>'Compeleted',
+          4=>'Cancel'
     
           )
               ?>
-          <select style="border: none;" claas="form-control">
+          <select onchange="change_booking_status(this.value,{{$bk->id}})" style="border: none;" claas="form-control">
           @foreach($status as $key=>$value)
           @if($bk->status==$key)
           <option selected value="{{$key}}">{{ $value }}</option>
@@ -1810,6 +1813,11 @@ $roomtype = array(
 
 
     <script>
+        $(document).ready(function(){
+            $(document).ready(function() {
+    $('#example').DataTable();
+} );
+        })
         $(document).ready(function() {
             var max_fields      = 10; //maximum input boxes allowed
             var wrapperFacility   	= $(".append_facility_row_init"); //Fields wrapper
@@ -1851,6 +1859,7 @@ $roomtype = array(
                     $(wrapperFacility).append(html); //add inputs row box
 
                 }
+                
             });
 
             $(wrapperFacility).on("click",".remove_field", function(e){ //user click on remove text
@@ -1990,6 +1999,63 @@ swal({
 //end of sweetalert
   
     }
+
+    //function update booking status
+    function change_booking_status(status,booking_id)
+    {
+       
+        var formData = new FormData();
+     formData.append('id',booking_id);
+     formData.append('status',status);
+    
+swal({
+  title: "Are you sure?",
+  text: "Want to Change the Booking Status",
+  icon: "info",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    ///start ajaxcode
+    $.ajax({
+      type: "POST",
+      url: "{{ route('change-booking-status') }}",
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: 'JSON',
+       beforeSend:function(){
+           
+       },
+      success: function(data) {
+      
+        if(data.status==200)
+        {
+           swal(data.message);
+            
+        }
+        if(data.status==204)
+        {
+          swal(data.message);
+        }
+      
+            }
+      });
+
+  //ajax end
+
+    ///end of ajaxcode
+
+  } else {
+    return false;
+  }
+});
+//end of sweetalert
+    }
+    //end of update booking status
     </script>
 
 @endsection
