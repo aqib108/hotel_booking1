@@ -9,6 +9,8 @@ use Config;
 use App\Models\SocialLinks;
 use App\Models\User;
 use App\Models\Hotel;
+use App\Models\Booking;
+use DB;
 class AdminController extends Controller
 {
     //
@@ -76,8 +78,36 @@ function smsmarketing()
 {
     $title = 'SMS Marketing';
     $webset = array();
-        $data = User::where('user_type', Config::get('constants.user_type.HOTEL'))->get();
+        
+        $data = Hotel::all();
+       
         return view('admin.sms_marketing',compact('title','data','webset'));
 }
+///admin booking
+function booking()
+{
+    $title = 'Booking Order';
+    $data = DB::table('bookings as bk')
+    ->join('rooms as ro','ro.id','bk.room_id')
+    ->join('hotels as ho','ho.id','bk.hotel_id')
+    ->get(['bk.*','ro.name as room_title','ro.room_type','ro.room_price','ho.name as hotel_name']);
+    return view('admin.booking',compact('title','data'));
+}
+
+//end of booking
+
+///function delete booking
+function deletebooking($id)
+{
+    $book = Booking::find($id);
+    if($book)
+    {
+        $book->delete();
+        return back();
+    }
+}
+
+//end of booking
+
 
 }

@@ -74,19 +74,18 @@
            
           
         
-            <div class="row">
-          
-          <div class="col-md-6">
-          <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">Alabama</option>
-    ...
-  <option value="WY">Wyoming</option>
-</select>
+          <div class="row">
+          <div class="col-md-12">
+          <input type="checkbox" id="checkAll"  /><span>Check All</span>
           </div>
-          <div class="col-md-6">
-         
+          @foreach($data as $d)
+         <div class="col-md-4">
+         <input type="checkbox" name="phone[]" value="{{ $d->phone }}" /><span>{{$d->name}}</span>
+         </div>
+          @endforeach
+
           </div>
-          
+          <div class="row">
           <div class="col-md-12">
             <div class="form-group">
               <label>Message
@@ -137,6 +136,4 @@
   @include('master.footer');
 
 
-  <script>
-
-  </script>
+  

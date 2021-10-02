@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('mainContent')
+
     <div class="page-content">
         <div class="container">
             <div class="row">
@@ -983,7 +984,7 @@
                                         <input type="hidden" name="hotel_id" value="{{ $hotelId }}" />
                                             <div class="form-group">
                                           <label>Name</label>
-                                            <input type="text" class="form-control" name="name" id="name"  />
+                                            <input type="text" class="form-control" name="name" required id="name"  />
                                             
                                             </div>
                                            
@@ -994,7 +995,7 @@
                                             </div>
                                             <div class="form-group">
                                           <label>Comment</label>
-                                            <textarea class="form-control" name="comment"></textarea>
+                                            <textarea class="form-control" required name="comment"></textarea>
                                             </div>
                                         
                                             
@@ -1006,7 +1007,45 @@
   
                                         <input type="submit" id="btnsubmit" class="mbtn" style="cursor: pointer;" name="btnsubmit" value="Submit" />
                                         </form> 
-                                    
+                                        <div class="mx-auto">
+    <div class="row  mx-0 mx-md-auto">
+        <div class="col-lg-10 col-md-11 px-1 px-sm-2">
+            <div class="card border-0 px-3">
+               
+                <div class="row bg-light">
+                  
+                  
+                    <!-- Review by user -->
+                    @foreach($reviews as $re)
+                <div class="review pt-5">
+                    <div class="row d-flex">
+                        <div class="profile-pic"><img src="{{ asset('images/uploads/users/'.$re->image) }}" width="60px" height="60px"></div>
+                        <div class="d-flex flex-column pl-3">
+                            <h4>{{ $re->name ?? '' }}</h4>
+                            <p class="grey-text">{{$re->date_time ?? ''}}</p>
+                        </div>
+                    </div>
+                    <div class="row pb-3 pt-3">
+                        <!-- <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div> -->
+                        <!-- <div class="green-text">
+                            <h5 class="mb-0 pl-3">Excellent</h5>
+                        </div> -->
+                    </div>
+                    <div class="row pb-3">
+                        <p>This dive center is incredibly well organized and is at the top of its game.</p>
+                    </div>
+                  
+                </div>
+                @endforeach
+                
+            </div>
+        </div>
+    </div>
+</div>
                                 </section>
                             </div>
                         </div>

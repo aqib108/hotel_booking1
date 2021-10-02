@@ -1,6 +1,18 @@
 <div class="card card-hotel w-100 mb-2">
     <div class="card-hotel__img">
-        <img class="img-cover" src="<?php echo '/uploads/hotel_profile/'.$hotel->thumbnail; ?>" alt="#"/>
+    <?php 
+    if(!empty($hotel->thumbnail))
+    {
+        $path = asset('uploads/hotel_profile/'.$hotel->thumbnail); 
+      ///$path = 'uploads/hotel_profile/'.$hotel->thumbnail;
+    }
+    else
+    {
+        $path =  asset('images/hotels/default.jpg'); 
+              
+    }
+    ?>
+    <img class="img-cover" src="{{ $path }}" alt="#"/>
     </div>
     <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary"> Rs. {{ $hotel->Price_range }}</span></div>
     <div class="card-hotel__bottom">

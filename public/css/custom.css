@@ -1,24 +1,28 @@
-.display-none{
+.display-none {
     display: none !important;
 }
 
 .mt-10 {
     margin-top: 10px;
 }
+
 .mt-20 {
     margin-top: 20px;
 }
+
 .mt-30 {
     margin-top: 30px;
 }
+
 .mt-40 {
     margin-top: 40px;
 }
+
 .mt-50 {
     margin-top: 50px;
 }
 
-.previewImg{
+.previewImg {
     width: 120px;
     height: 130px;
     /*margin-top: 30px;*/
@@ -32,7 +36,7 @@
     position: absolute;
 }
 
-.fileBorowseBtn{
+.fileBorowseBtn {
     height: 40px;
     padding: 9px 20px;
     font-size: 15px;
@@ -44,8 +48,7 @@
     display: inline-block;
 }
 
-
-.header-dropdown-menu button{
+.header-dropdown-menu button {
     height: 100%;
     color: #212529;
     background-color: #f8f9fa;
@@ -60,7 +63,6 @@
     background-color: #dae0e5;
     border-color: #d3d9df;
 }
-
 
 .dropdown-content {
     display: none;
@@ -82,20 +84,24 @@
     display: block;
     border-bottom: 1px solid lightgrey;
 }
+
 .dropdown-content a i {
     color: var(--green);
     font-size: 15px;
 }
-.header-dropdown-menu a:hover {background-color: #ddd;}
 
-.show {display: block;}
+.header-dropdown-menu a:hover {
+    background-color: #ddd;
+}
 
+.show {
+    display: block;
+}
 
-.add-facilit-btn{
+.add-facilit-btn {
     height: 35px;
     padding: 7px 16px;
     font-weight: 600;
     font-size: 13px;
     color: #444;
-
 }

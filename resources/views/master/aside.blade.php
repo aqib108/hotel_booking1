@@ -98,6 +98,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a  href="{{ route('hotels-booking') }}" class="nav-link <?php  echo getActive('hotels-booking'); ?>">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Booking Order
+              <!--  <span class="right badge badge-danger myhide">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/viewcustomer"  class="nav-link <?php  //echo //getActive('viewcustomer'); ?>">
               <i class="nav-icon fas fa-envelope"></i>
               <p>

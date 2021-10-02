@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use Auth;
-
+use DB;
 class HotelController extends Controller
 {
     public function index()
@@ -29,7 +29,13 @@ class HotelController extends Controller
         $hotelId = getspecficedata($id,'hotel_id','id','rooms');
      
         $room = $roomsObj->getActiveRoomsOfHotel($id);
-        $allrooms = $roomsObj->getAllActiveRoomsOfHotel($hotelId);   
-        return view('pages.roomDetail',compact('room','allrooms','hotelId'));   
+        $allrooms = $roomsObj->getAllActiveRoomsOfHotel($hotelId); 
+        $reviews = DB::table('reviews as re')
+                   ->join('users as us','us.id','re.user_id')
+                   ->where(['room_id'=>$id,'hotel_id'=>$hotelId])
+                   ->orderBy('date_time','DESC')
+                   ->get(['re.*','us.name as user_name','us.image']);
+              //    dd($reviews);
+        return view('pages.roomDetail',compact('room','allrooms','hotelId','reviews'));   
     }
 }

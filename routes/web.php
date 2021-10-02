@@ -27,9 +27,9 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/', [App\Http\Controllers\HomeController::Class, 'index'])->name('home');
 
-Route::get('/about-us', [App\Http\Controllers\HomeController::Class, 'aboutUS'])->name('contactUs');
+Route::get('/about-us', [App\Http\Controllers\HomeController::Class, 'aboutUS'])->name('about-us');
 
-Route::get('/contact-us', [App\Http\Controllers\HomeController::Class, 'ContactUs'])->name('aboutUs');
+Route::get('/contact-us', [App\Http\Controllers\HomeController::Class, 'ContactUs'])->name('contact-us');
 
 Route::get('/hotels', [App\Http\Controllers\HotelControllers\HotelController::Class, 'index'])->name('hotels');
 
@@ -96,6 +96,13 @@ Route::get('/web-setting', [AdminController::class, 'webset'])->name('web-settin
 Route::post('/savesetting', [Setting::class, 'save_web_setting'])->name('savesetting');
 Route::get('/sms-marketing', [AdminController::class, 'smsmarketing'])->name('sms-marketing');
 //end of website setting
+///admin booking
+Route::get('/hotels-booking', [AdminController::class, 'booking'])->name('hotels-booking');
+Route::get('/delete-booking/{id}', [AdminController::class, 'deletebooking'])->name('delete-booking');
+
+//end of admin booking
+
+
 //chnage status
 
 

@@ -26,7 +26,7 @@
         </ul>
         <hr/>
         <ul class="product__price d-flex justify-content-between align-items-center">
-            <li class="mr-2"><span>Price per night from</span></li>
+            <li class="mr-2"><span> Price per night from</span></li>
             <li><span class="cost">Rs. {{ $room->room_price }}</span>
             </li>
         </ul>
@@ -39,8 +39,8 @@
     <div class="product__footer">
         <ul class="product__price d-flex justify-content-between align-items-center">
             <li class="mr-2"><span>Price per night from</span></li>
-            <li><span class="cost">Rs. 2000</span>
+            <li><span class="cost">Rs. {{$room->price}}</span>
             </li>
-        </ul><a class="product__btn-book btn btn-secondary btn--round bg-style" href="booking-traveler.html">book now</a>
+        </ul><a class="product__btn-book btn btn-secondary btn--round bg-style" href="{{ route('roomsDetails',$room->id) }}">book now</a>
     </div>
 </div>

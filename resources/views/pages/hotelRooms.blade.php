@@ -21,13 +21,19 @@
                             <a class="nav-link d-flex d-md-none align-items-center" href="#"><span class="mr-2">Sort by</span><i class="icon icon-sort-duble"></i></a></div>
                         <div class="sortbar__grid d-flex align-items-stretch ml-md-auto"><a class="nav-link active js-toggle-grid" href="#" data-grid="grid" data-cols="col-12 col-sm-6 col-xl-4 d-flex"><i class="fas fa-th-large"></i></a><a class="nav-link js-toggle-grid" href="#" data-grid="list" data-cols="col-12 d-flex"><i class="fas fa-th-list"></i></a></div>
                     </nav>
-                    <div class="category-content__items row pad-lg-20">
-                         
+                    <div class="category-content__items row pad-lg-20 34">
+                    
+                        @if(!empty($rooms) && count($rooms) > 0 ) 
                         @foreach($rooms as $room)
                         <div class="col-12 col-sm-6 col-xl-4 d-flex">
                             @include('layouts.roomGridListDesign')
                         </div>
                         @endforeach
+                        @else
+                        <div class="col-12 col-sm-6 col-xl-4 d-flex">
+                            No Room Avilable <a href="{{ URL::to('/') }}">Back to See More</a>
+                        </div>
+                        @endif
 
 
                         <div class="col-12 banner-list">

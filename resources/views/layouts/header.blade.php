@@ -4,11 +4,18 @@
 }
 .mbtn{
   background: #003580;
-    width: 15% !important;
+    width: 50% !important;
     color: white;
     /* border-radius: 36%; */
     font-size: 20px;
 }
+@media only screen and (min-width: 992px) {
+.mbtn{
+    width: 15% !important;
+}
+    
+}
+
 </style>
 
 <header  class="page-header">
@@ -18,10 +25,10 @@
             <div class="container" >
                 <div class="row justify-content-center justify-content-between">
 
-                    <div class="col-12 col-md col-lg-3 d-flex justify-content-center justify-content-md-start">
+                    <div class="col-12 col-md col-lg-3 d-flex">
                         <a class="navbar-logo d-inline-flex align-items-center" href="/travel/index.php">
                             <img class="img-fluid mr-3" src="{{ asset('images/logo.png') }}" alt="#"/>
-                            <h4 class="m-0 text-light">Pakistani Booking</h4>
+                            <h4 class="m-0 text-light">Pakistani Booking1</h4>
                         </a>
                     </div>
 
@@ -55,9 +62,10 @@
                             </ul>
                         </div>
                     @else
-                        <div class="col col-lg-3 text-right">
+                        <div class="col col-lg-3 text-right  bg-style ">
                             <div class="header-dropdown-menu">
-                                <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-caret-down"></i></button>
+                                <!-- <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-caret-down"></i></button> -->
+                                <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-user"></i></button>
 
                                 <div id="myDropdown" class="dropdown-content">
                                     <a href="#"><i class="fa fa-user"></i> &nbsp; Profile</a>
@@ -110,15 +118,15 @@
                 </div>
                 <ul  class="main-nav__list nav d-flex bg-style" id="navMenu">
 
-                    <li class="nav-item "><a class="nav-link fw-bold text-uppercase bg-style" href="/travel/index.php"><span >Home</span></a>
+                    <li class="nav-item "><a class="nav-link fw-bold text-uppercase bg-style" href="{{ URL::to('/') }}"><span >Home</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="hotel.html"><span>Hotel</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="{{ URL::to('/') }}"><span>Hotel</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="#"><span>Cities</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="{{ URL::to('/') }}"><span>Cities</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="about.html"><span>about us</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="{{ route('about-us') }}"><span>about us</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="contacts.html"><span>contacts</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase bg-style" href="{{ route('contact-us') }}"><span>contacts</span></a>
                     </li>
 
                     <li class="nav-item display-none"><a class="nav-link fw-bold text-uppercase" href="flights.html"><span>flights</span></a>
@@ -177,9 +185,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link bg-style" href="about.html"><span>About us</span></a>
+                            <li class="nav-item"><a class="nav-link bg-style" href="{{ route('about-us') }}"><span>About us</span></a>
                             </li>
-                            <li class="nav-item"><a class="nav-link bg-style" href="contacts.html"><span>Contacts</span></a>
+                            <li class="nav-item"><a class="nav-link bg-style" href="{{ route('contact-us') }}"><span>Contacts</span></a>
                             </li>
                         </ul>
                     </li>

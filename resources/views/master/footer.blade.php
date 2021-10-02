@@ -101,10 +101,19 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <script src="{{ asset('aassest/multi/js/index.js')}}"></script>
-<script src="aassest/js/dist/js/demo.js"></script>
+<script src="{{ asset('aassest/js/dist/js/demo.js')}}"></script>
 </body>
 </html>
 <script>
+///checkbox checked
+$("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+
+    //end
+  </script>
+<script>
+
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
