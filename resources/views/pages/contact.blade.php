@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('mainContent')
+<?php  $settingdata = setting(); ?>
 <section class="intro d-flex flex-column load">
         <div class="intro__bg js-intro-bg">
             <div class="over"></div>
@@ -77,8 +78,18 @@
         </div>
     </section>
     <div class="page-content pt-5">
-        <div class="container">
-          <div class="row">
+
+    <div class="container">
+    @if (session('Message'))
+                <div class="ps-container mt-10">
+                    <div class="alert alert-success alert-dismissable custom-success-box fs-15" style="font-size: 16px">
+                        <a href="#" class="close mr-20" data-dismiss="alert" aria-label="close" style="font-size: 30px;">&times;</a>
+                        <strong> {{ session('Message') }} </strong>
+                    </div>
+                </div>
+            @endif
+    <div class="row">
+          
             <aside class="sidebar col-lg-3 order-1 order-lg-0">
               <div class="sidebar__content js-sticky-top">
                 <section class="sidebar__card card">
@@ -86,12 +97,13 @@
                     <h4 class="card-title">Contacts</h4>
                     <hr class="my-3"/>
                   </div>
+                
                   <ul class="sidebar__contacts">
-                    <li class="d-flex align-items-baseline"><i class="icon icon-phone mr-2"></i><a href="tel:#">8-800-0011-2222-333</a></li>
-                    <li class="d-flex align-items-baseline"><i class="icon icon-building mr-2"></i>
-                      <p class="mb-0">314-336 Bourke St,<br>Melbourne VIC 3000,<br>Australia</p>
+                    <li class="d-flex align-items-baseline"><i class="fa fa-phone mr-2"></i><a href="tel:#">{{$settingdata->phone}}</a></li>
+                    <li class="d-flex align-items-baseline"><i class="fa fa-building mr-2"></i>
+                      <p class="mb-0">{{$settingdata->address}}</p>
                     </li>
-                    <li class="d-flex align-items-baseline"><i class="icon icon-envelope-close mr-2"></i><a href="mailto:#">Yourtravel@gmail.com</a></li>
+                    <li class="d-flex align-items-baseline"><i class="fa fa-envelope mr-2"></i><a href="mailto:#">{{$settingdata->Email}}</a></li>
                   </ul>
                 </section>
                 <section class="sidebar__card card">
@@ -99,8 +111,9 @@
                     <h4 class="card-title">Send us a message</h4>
                     <hr class="my-3"/>
                   </div>
-                  <form class="sidebar__subscribe" action="#" method="POST" data-toggle="validator">
-                    <div class="form-group">
+                  <form class="sidebar__subscribe" action="{{ route('contact') }}" method="POST" data-toggle="validator">
+                  @csrf  
+                  <div class="form-group">
                       <input class="form-control" type="text" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">

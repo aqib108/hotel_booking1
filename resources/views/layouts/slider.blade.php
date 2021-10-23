@@ -3,11 +3,13 @@
             <div class="over"></div>
             <div class="swiper-container js-intro-slider-bg">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-5.jpg') }}" alt="#"></div>
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>    
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
                     <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-2.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
+                    
                     <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-4.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-5.jpg') }}" alt="#"></div>
+                  
                 </div>
             </div>
         </div>

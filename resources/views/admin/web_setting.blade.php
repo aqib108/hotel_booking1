@@ -61,14 +61,23 @@
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">Website Setting</h3>
-
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
               <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
             </div>
           </div>
           <!-- /.card-header -->
-          <form id="frmwebsetting">
+          <form method="post" action="{{ route('savesetting') }}" enctype="multipart/form-data" >
+            @csrf
           <div class="card-body">
             <div class="row">
           
@@ -112,9 +121,7 @@
             <div class="form-group">
               <label>Website Logo
               </label>
-              <input type="file" name="logo" id="logo" class="form-control" value="<?php if(!empty($webset)){ echo $webset['title']; }else{
-                
-              } ?>" />
+              <input type="file" name="logo" id="logo" class="form-control"  />
             </div>
            
           </div>
@@ -132,7 +139,8 @@
             <div class="form-group">
               <label>Logo
               </label><br>
-             <img src="/uploads/logo/{{$webset['logo']}}" style="width: 100px;height: 100px;" />
+        
+             <img src="{{ asset('uploads/logo').'/'.$webset['logo'] }}" style="width: 100px;height: 100px;" />
             </div>
            
           </div>
@@ -183,7 +191,7 @@
             </div>
           </div>
           <!-- /.card-header -->
-          <form id="frmsocail" method="post" action="{{ route('savesocial') }}">
+          <form id="frmsocail" method="post" action="{{ route('save-social') }}">
      @csrf
          <div class="card-body">
             <div class="row">
@@ -330,7 +338,8 @@ function deleteproimage(id,path)
 /**********************************save************************************/
 
   $('#frmwebsetting').on("submit",function(e){
- 
+ alert('hi');
+ return false;
     e.preventDefault(); 
      var formData = new FormData();
   var other_data = $('#frmwebsetting').serializeArray();
@@ -426,7 +435,7 @@ var other_data = $('#frmsocail').serializeArray();
      
  $.ajax({
    type: "POST",
-   url: "{{ route('savesocial') }}",
+   url: "{{ route('save-social') }}", 
    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
    data: formData,
    cache: false,

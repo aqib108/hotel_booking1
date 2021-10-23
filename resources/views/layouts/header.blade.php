@@ -24,11 +24,11 @@
         <div  class="page-header__top bg-white js-header-top js-top-panel bg-style">
             <div class="container" >
                 <div class="row justify-content-center justify-content-between">
-
+                
                     <div class="col-12 col-md col-lg-3 d-flex">
-                        <a class="navbar-logo d-inline-flex align-items-center" href="/travel/index.php">
-                            <img class="img-fluid mr-3" src="{{ asset('images/logo.png') }}" alt="#"/>
-                            <h4 class="m-0 text-light">Pakistani Booking1</h4>
+                        <a class="navbar-logo d-inline-flex align-items-center" href="{{ URL::to('/') }}">
+                            <img class="img-fluid mr-3" src="{{ asset('uploads/logo').'/'.$setting->logo }}" alt="#"/>
+                            
                         </a>
                     </div>
 
@@ -37,7 +37,7 @@
                             <i class="fa fa-phone js-tooltip-call mr-3 text-light" data-toggle="tooltip" data-placement="bottom" title="Support 8-800-0011-2222-333"></i>
                             <div class="page-header__call-right text-light">
                                 <div class="title fz-small">Support</div>
-                                <div class="phone fw-bold">8-800-0011-2222-333</div>
+                                <div class="phone fw-bold">{{ $setting->phone }}</div>
                             </div>
                         </a>
                         <div class="page-header__top-search d-none d-lg-block ml-4 display-none" id="navbarSearch">
@@ -68,7 +68,7 @@
                                 <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-user"></i></button>
 
                                 <div id="myDropdown" class="dropdown-content">
-                                    <a href="#"><i class="fa fa-user"></i> &nbsp; Profile</a>
+                                    <a href="{{ route('profile') }}"><i class="fa fa-user"></i> &nbsp; Profile</a>
 
 
                                     <a href="{{ route('dashboard') }}"><i class="fa fa-heart"></i> &nbsp; Dashboard</a>
@@ -108,13 +108,14 @@
                             </div>
                         </form>
                     </div>
-
+                    @guest
                     <ul class="nav nav-panel">
-                        <li class="nav-item d-flex"><a class="nav-link btn btn-light js-toggle-account" href="#modalAccount" data-toggle="modal" role="button" data-account="login"><i class="text-gray icon icon-user mr-2"></i><span>log in</span></a>
+                        <li class="nav-item d-flex"><a class="nav-link btn btn-light" href="{{ route('login') }}"  ><i class="fa fa-user mr-2"></i><span>log in</span></a>
                         </li>
-                        <li class="nav-item d-flex"><a class="nav-link btn btn-light js-toggle-account" href="#modalAccount" data-toggle="modal" role="button" data-account="regist"><i class="text-gray icon icon-login mr-2"></i><span>sign up</span></a>
+                        <li class="nav-item d-flex"><a class="nav-link btn btn-light" href="{{ route('register') }}" ><i class="text-gray fa fa-user mr-2"></i><span>sign up</span></a>
                         </li>
                     </ul>
+                    @endguest
                 </div>
                 <ul  class="main-nav__list nav d-flex bg-style" id="navMenu">
 

@@ -29,7 +29,7 @@ else
                 <!-- Room Detail Sidebar End -->
                 </aside>--}}
 
-                <div class="col-lg-12" id="barba-wrapper">
+                <div class="col-lg-12 pt-5" id="barba-wrapper">
                     <div class="barba-container">
                         <nav class="hotel-nav">
                             <ul class="hotel-nav__menu nav nav-tabs" role="tablist">
@@ -697,7 +697,9 @@ $roomtype = array(
                                     <hr class="mb-4">
                                     <div class="hotel-card">
                                         <h4>Today Booking</h4>
-                                      
+                                      <div class="table-responsive">
+
+                                    
                                         <table id="example" class="table table-striped table-bordered" style="width:100%">
   <thead>
     <tr>
@@ -777,6 +779,7 @@ $roomtype = array(
 @endforeach
   </tbody>
 </table>
+      </div>
                                        
                                     </div>
                                     <div class="hotel-card">
@@ -835,7 +838,21 @@ $roomtype = array(
                                             </div>
                                             <div class="form-group">
                                           <label>Hotel City</label>
-                                      <input type="text" name="city" id="city" value="<?php if(!empty($profile)) echo $profile->city;  ?>" class="form-control" />
+                                          <?php $cities = getcities(); ?>
+                                          <select class="form-control" required id="city" name="city">
+                                          @foreach($cities as $ct)
+                                          @if(!empty($profile))
+                                          @if($ct->title == $profile->city )
+                                          <option selected value="{{$ct->title}}">{{ $ct->title; }}</option>
+                                          @else
+                                          <option  value="{{$ct->title}}">{{ $ct->title; }}</option>
+                                          @endif
+                                          @else
+                                          <option  value="{{$ct->title}}">{{ $ct->title; }}</option>
+                                          @endif
+                                          @endforeach
+                                          </select>
+                                    
   </div>
   <div class="form-group">
   <label>Hotel Profile Image</label>
@@ -867,7 +884,7 @@ $roomtype = array(
                                      
                                     </div>
                                 </section>
-                                <section class="hotel-popular">
+                                <section class="hotel-popular display-none">
                                     <h3>Popular hotels in the area</h3>
                                     <hr class="mb-4">
                                     <div class="row">
@@ -1254,63 +1271,53 @@ $roomtype = array(
                                     <hr class="mb-4">
                                     <div class="hotel-card hotel-review">
                                         <div class="row">
-                                            <div class="hotel-review__total col-12 col-sm-4">
-                                                <ul class="total d-flex mb-1">
-                                                    <li class="total__item">8,2</li>
-                                                    <li class="total__item">10</li>
-                                                </ul>
-                                                <p class="review">Based on  <span class="reviews">9803</span>
-                                                    reviews
-                                                </p>
-                                                <hr>
-                                                <p>Guest reviews are written by our customers after their stay at Hotel Ravena</p>
-                                            </div>
-                                            <div class="hotel-review__progress col-12 col-sm-8 js-point-progress">
-                                                <div class="item pr-3">
-                                                    <div class="mb-1">Comfort</div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="progress progress--lg">
-                                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div><span class="fw-bold">8.2</span>
-                                                    </div>
-                                                </div>
-                                                <div class="item pr-3">
-                                                    <div class="mb-1">Facilities</div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="progress progress--lg">
-                                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div><span class="fw-bold">9.3</span>
-                                                    </div>
-                                                </div>
-                                                <div class="item pr-3">
-                                                    <div class="mb-1">Staff</div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="progress progress--lg">
-                                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div><span class="fw-bold">7.6</span>
-                                                    </div>
-                                                </div>
-                                                <div class="item pr-3">
-                                                    <div class="mb-1">Food</div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="progress progress--lg">
-                                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div><span class="fw-bold">8.5</span>
-                                                    </div>
-                                                </div>
-                                                <div class="item pr-3">
-                                                    <div class="mb-1">Price-quality ratio</div>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="progress progress--lg">
-                                                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div><span class="fw-bold">8.2</span>
-                                                    </div>
-                                                </div>
+                                            
+                                            <div class="hotel-review__progress col-12 col-sm-12 js-point-progress">
+                                            <div class="mx-auto">
+    <div class="row  mx-0 mx-md-auto">
+        <div class="col-lg-10 col-md-11 px-1 px-sm-2">
+            <div class="card border-0 px-3">
+               
+                <div class="row bg-light">
+                  
+                  @if( count($data['reviews']) == 0 )
+<h6>No Guest Reviews</h6>
+                  @else
+                    <!-- Review by user -->
+                    @foreach($data['reviews'] as $re)
+                <div class="review pt-5">
+                    <div class="row d-flex">
+                        <div class="profile-pic"><img src="{{ asset('images/uploads/users/'.$re->image) }}" width="60px" height="60px"></div>
+                        <div class="d-flex flex-column pl-3">
+                            <h4>{{ $re->name ?? '' }}</h4>
+                            <p class="grey-text">{{$re->date_time ?? ''}}</p>
+                        </div>
+                    </div>
+                    <div class="row pb-3 pt-3">
+                        <!-- <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div>
+                        <div class="fa fa-circle green-dot my-auto rating-dot"></div> -->
+                        <!-- <div class="green-text">
+                            <h5 class="mb-0 pl-3">Excellent</h5>
+                        </div> -->
+                    </div>
+                    <div class="row pb-3">
+                        <p>This dive center is incredibly well organized and is at the top of its game.</p>
+                    </div>
+                  
+                </div>
+                @endforeach
+                
+            </div>
+        </div>
+    </div>
+</div>     
+                                          
+                                     @endif      
+                                               
+                                                
                                             </div>
                                         </div>
                                     </div>

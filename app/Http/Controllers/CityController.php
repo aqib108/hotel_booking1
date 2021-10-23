@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function create(Request $request) {
+    public function create() {
         $cities = array(
             'Karachi', 'Lahore', 'Faisalabad', 'Rawalpindi', 'Gujranwala', 'Peshawar', 'Multan', 'Hyderabad', 'Islamabad', 'Quetta',
             'kalat', 'Makran', 'Naseerabad', 'Sibi', 'Zhob', 'Rakhshan', 'Bannu', 'Hazara', 'Malakand', 'Bhambore', 'Shaheed Benzirabad',
@@ -25,32 +25,22 @@ class CityController extends Controller
         /*** Store city names in db with in loop */
         foreach ($cities as $city)
         {
-            $modelCity = new City();
-            $modelCity->title = $city;
-
-            if($city == "Karachi" || $city == "Sargodha" || $city == "Lahore" || $city == "Faisalabad" || $city == "Rawalpindi" || $city == "Peshawar" || $city == "Multan" || $city == "Islamabad" || $city == "Dera Ghazi Khan" || $city == "Gujranwala" || $city == "Sahiwal" || $city == "Sheikhupura" || $city == "Quetta" || $city == "Dera Ismail Khan" || $city == "Hyderabad" || $city == "Muzaffarabad" )
-            {
-                $modelCity->priority = 1;
-            }
-            else
-            {
-                $modelCity->priority = 0;
-            }
-
-            $modelCity->country_id = 1;
-            $modelCity->state_id = 1;
-            $modelCity->status = 1;
-
-            if($modelCity->save())
-            {
-                // city saved
-                echo "saved";
-            }
-            else
-            {
-                // city not saved
-                echo "not saved";
-            }
+            $data[] = array(
+                'title'=>$city,
+                'priority'=>1,
+                'status'=>1,
+            );
+          
+        }
+        dd('hi');
+        $result = DB::table('cities')->insert($data);
+        if($result)
+        {
+       echo 'success';
+        }
+        else
+        {
+ echo 'error';
         }
     }
 }

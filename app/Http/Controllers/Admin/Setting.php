@@ -13,6 +13,12 @@ class Setting extends Controller
     function save_web_setting(Request $request)
     {
         // dd($request->all());
+        $request->validate([
+            'email' => 'required',
+            'title' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
         extract($request->all());
         $wb = new Websetting;
         $data = array();
@@ -27,6 +33,7 @@ class Setting extends Controller
         $wb->address = $request->address;
         if(!empty($web_id))
         {
+            
             if($request->hasfile('logo'))
             {
               
@@ -63,17 +70,17 @@ class Setting extends Controller
         if($wb->save())
         {
          $message='successfully saved';
-         $data['status'] = 200;
+        // $data['status'] = 200;
         }
         else
         {
             $message='Error in saved data';
-            $data['status'] = 204;
+          //  $data['status'] = 204;
         }
         
         $data['message'] = $message;
         
-        return response()->json($data);
+        return redirect()->back()->with($data);
     }
 
     //function save links

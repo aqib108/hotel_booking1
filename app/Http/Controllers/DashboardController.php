@@ -30,16 +30,23 @@ class DashboardController extends Controller
                               ->join('rooms as ro','ro.id','bk.room_id')
                               ->where('bk.hotel_id',$hotelId)
                               ->get(['bk.*','ro.name as room_title','ro.room_type','ro.room_price']);
-                    
+                    $reviews = DB::table('reviews as re')
+                              ->join('users as us','us.id','re.user_id')
+                              ->where(['hotel_id'=>$hotelId])
+                              ->orderBy('date_time','DESC')
+                              ->get(['re.*','us.name as user_name','us.image']);
+            
                 }
                 else
                 {
+                    $reviews = array();
                     $rooms = array();
                     $booking = array();
                 }
                
                 $data['booking'] = $booking;
                 $data['rooms'] = $rooms;
+                $data['reviews'] = $reviews;
                 $data['profile'] = Hotel::where('user_id',Auth::user()->id)->get();
                 //  dd($rooms->facilities);
                 return view('pages.dashboard', ['data' => $data]);

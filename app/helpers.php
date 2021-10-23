@@ -1,7 +1,21 @@
 <?php
 use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+function getcities()
+{
+  return DB::table('cities')->get();
+  
+}
+function setting()
+{
+    $setting = DB::table('websettings')->first();
+    return $setting;
+}
+function socail_setting()
+{
+    $setting = DB::table('social_links')->first();
+    return $setting;
+}
   function myfun()
   {
       return 'hello';

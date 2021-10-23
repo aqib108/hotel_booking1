@@ -183,7 +183,7 @@
         </div>
     </div>
 </div>
-
+<?php  $setting = setting(); ?>
 <!--Header Section Start-->
  @include ('layouts.header')
 <!--Header Section End-->
@@ -322,3 +322,45 @@
 
 <!-- Mirrored from netgon.ru/themeforest/yourtravelworld_html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 May 2021 09:10:57 GMT -->
 </html>
+<script>
+function subscription()    
+      alert('hello');
+      return false;
+    //   e.preventDefault(); 
+    //    var formData = new FormData();
+    // var other_data = $('#subscription').serializeArray();
+    //   $.each(other_data,function(key,input){
+    //       formData.append(input.name,input.value);
+    //   });
+      
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "{{ route('subscription') }}",
+    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //     data: formData,
+    //     cache: false,
+    //     contentType: false,
+    //     processData: false,
+    //     dataType: 'JSON',
+    //      beforeSend:function(){
+              
+    //           },
+    //     success: function(data) {
+        
+    //       if(data.status==200)
+    //       {
+            
+            
+            
+    //       }
+    //       if(data.status==204)
+    //       {
+              
+    //       }
+    //     }
+    //     });
+  
+    // //ajax end 
+  
+      }
+</script>

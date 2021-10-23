@@ -95,7 +95,15 @@ function booking()
 }
 
 //end of booking
-
+///function cities
+function cities()
+{
+    $title = 'Hotel Cities';
+    $data = DB::table('cities')->get();
+  //  dd($data);
+    return view('admin.cities',compact('title','data'));
+}
+//end of cities
 ///function delete booking
 function deletebooking($id)
 {

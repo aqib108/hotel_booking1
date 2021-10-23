@@ -491,7 +491,7 @@
                         @include('layouts.hotelDesign')
                     </div>
                 @endforeach
-                <div class="col-12 page-section__more text-center">
+                <div class="display-none col-12 page-section__more text-center">
                     <button class="btn btn-secondary btn--round btn-load" type="button">Show more<i class="fa fa-spin"></i>
                     </button>
                 </div>
@@ -513,7 +513,7 @@
                         @include('layouts.servicesDesign')
                     </div>
                 @endfor
-                <div class="col-12 page-section__more text-center">
+                <div class="display-none col-12 page-section__more text-center">
                     <button class="btn btn-secondary btn--round btn-load" type="button">Show more<i class="fa fa-spin"></i>
                     </button>
                 </div>

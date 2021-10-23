@@ -1,5 +1,7 @@
  <!-- /.content-wrapper -->
- 
+ <!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
  <footer class="main-footer">
     <strong>Copyright &copy; 2021 <?php /// echo Config::get('constants.App_year');  ?> <a href="<?php echo Config::get('constants.App_url');  ?>"><?php echo Config::get('constants.App_name');  ?></a>.</strong>
     All rights reserved.
@@ -104,6 +106,17 @@
 <script src="{{ asset('aassest/js/dist/js/demo.js')}}"></script>
 </body>
 </html>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6165d38886aee40a57363bbb/1fhqs4kck';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 <script>
 ///checkbox checked
 $("#checkAll").click(function(){

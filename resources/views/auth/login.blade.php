@@ -2,7 +2,41 @@
 <html>
 <head>
 <meta name="csrf-token" content="{{ csrf_token() }}" /> 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Looking for something amazing?">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="True">
+    <title>Pakistani Booking</title>
+    <!-- Edge and IE-->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- Add to homescreen for Chrome on Android-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Looking for something amazing?">
+    <link rel="icon" sizes="192x192" href="{{ asset('images/touch/chrome-touch-icon-192x192.png') }}">
+    <!-- Add to homescreen for Safari on iOS-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Your Travel World">
+    <link rel="apple-touch-icon" href="img/touch/apple-touch-icon.png">
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,600,700%7CPoppins:400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.structure.min.css ') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link id="cssRtl" rel="stylesheet" href="#">
+    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-stars-o.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blueimp-gallery.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
+    <link id="cssTheme" rel="stylesheet" href="{{ asset('css/skins/style-default.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <style>
 .myhide{
 display: none;
@@ -320,10 +354,41 @@ body {
   </div>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3gFKhVywUkygSxQEBdGVrI5-ZRrdjueA"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="{{ asset('js/maps.js') }}"></script>
+<script src="{{ asset('js/libs/moment.min.js') }}"></script>
+<script src="{{ asset('js/libs/wNumb.js') }}"></script>
+<script src="{{ asset('js/libs/nouislider.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/libs/barba.min.js') }}"></script>
+<script src="{{ asset('js/libs/sticky-kit.min.js') }}"></script>
+<script src="{{ asset('js/libs/velocity.min.js') }}"></script>
+<script src="{{ asset('js/libs/velocity.ui.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('js/libs/popper.min.js') }}"></script>
+<script src="{{ asset('js/libs/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/libs/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/libs/masonry.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/libs/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/libs/ofi.min.js') }}"></script>
+<script src="{{ asset('js/libs/jarallax.min.js') }}"></script>
+<script src="{{ asset('js/libs/jarallax-video.min.js') }}"></script>
+<script src="{{ asset('js/libs/jarallax-element.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.mCustomScrollbar.min.js') }}"></script>
+<script src="{{ asset('js/libs/swiper.min.js') }}"></script>
+<script src="{{ asset('js/libs/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('js/libs/flatpickr/rangePlugin.js') }}"></script>
+<script src="{{ asset('js/libs/select2.min.js') }}"></script>
+<script src="{{ asset('js/libs/select2/en.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/libs/validator.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.barrating.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery.blueimp-gallery.min.js') }}"></script>
+<script src="{{ asset('js/script.min.js') }}"></script>
+<script src="{{ asset('js/demo-switcher.js') }}"></script>
+<script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
 <script>
   /**********************************save************************************/
 

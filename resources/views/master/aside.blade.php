@@ -15,8 +15,10 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         
         <div class="info">
-       <a href="#"> <img  src="{{ asset('images/logo.png ' )}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">Hotel Booking</a>
+       <a href="#"> <img  src="{{ asset('images/plogo.png ' )}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="    height: auto;
+    width: 12.1rem;
+}"></a>
         </div>
       </div>
 
@@ -64,6 +66,7 @@
               <!--  <span class="badge badge-info right hidden">6</span> -->
               </p>
             </a>
+
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a  href="/catgry" class="nav-link <?php  //echo //getActive('catgry'); ?>">
@@ -89,6 +92,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a  href="{{ route('hotels-cities') }}" class="nav-link <?php  echo getActive('hotels-cities'); ?>">
+              <i class="nav-icon fas fa-hotel"></i>
+              <p>
+                Cities
+              <!--  <span class="right badge badge-danger myhide">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a  href="{{ route('Register-users') }}" class="nav-link <?php  echo getActive('Register-users'); ?>">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -106,7 +118,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="myhide nav-item">
             <a href="/viewcustomer"  class="nav-link <?php  //echo //getActive('viewcustomer'); ?>">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
@@ -124,7 +136,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="myhide nav-item">
             <a href="/supplier" onclick="activeclass('n6')" id="n6" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -151,6 +163,15 @@
               <!--  <span class="right badge badge-danger myhide">New</span> -->
               </p>
             </a>
+          </li>
+          <li class="px-4 nav-item">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off"></i> &nbsp;
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
           </li>
           
           <!--

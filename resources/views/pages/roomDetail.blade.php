@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('mainContent')
-
+<style>
+ .nav-link.active{
+     background-color: #003580 !important;
+ }
+ </style>   
     <div class="page-content">
         <div class="container">
             <div class="row">
@@ -12,7 +16,7 @@
                     <!-- Room Detail Sidebar End -->
                 </aside>
 
-                <div class="col-lg-12" id="barba-wrapper">
+                <div class="col-lg-12 pt-5" id="barba-wrapper">
                     <div class="barba-container">
                         <nav class="hotel-nav">
                             <ul class="hotel-nav__menu nav nav-tabs" role="tablist">

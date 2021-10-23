@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-
+use Auth;
 
 class LoginController extends Controller
 {
@@ -75,6 +75,15 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
-
+    protected function redirectTo()
+    {
+        
+      if (Auth::user()->user_type == -1)
+      {
+        return 'Admindashbord';  // admin dashboard path
+      } else {
+        return 'home';  // member dashboard path
+      }
+    }
 
 }
