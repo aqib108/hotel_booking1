@@ -25,8 +25,19 @@ use Illuminate\Support\Facades\DB;
 /*Route::get('/', function () {
     return view('pages.home');
 });*/
-Route::get('import-cities',[App\Http\Controllers\CountryController::Class, 'create'])->name('import-cities');
-Route::get('send-mail', function () {
+///send email
+Route::get('send-email', function () {
+   
+    $data = array('name'=>"aqib");
+        Mail::send(['text'=>'mail'], $data, function($message) {
+           $message->to('mehmood7455@gmail.com', 'Tutorials Point')->subject
+              ('Laravel Basic Testing Mail');
+           $message->from('aqibdev8@gmail.com','Virat Gandhi');
+        });
+  });
+
+//end of send email
+Route::get('import-cities', function () {
   $cities = array(
     'Karachi', 'Lahore', 'Faisalabad', 'Rawalpindi', 'Gujranwala', 'Peshawar', 'Multan', 'Hyderabad', 'Islamabad', 'Quetta',
     'kalat', 'Makran', 'Naseerabad', 'Sibi', 'Zhob', 'Rakhshan', 'Bannu', 'Hazara', 'Malakand', 'Bhambore', 'Shaheed Benzirabad',
@@ -77,7 +88,7 @@ Route::get('/about-us', [App\Http\Controllers\HomeController::Class, 'aboutUS'])
 Route::get('/contact-us', [App\Http\Controllers\HomeController::Class, 'ContactUs'])->name('contact-us');
 
 Route::get('/hotels', [App\Http\Controllers\HotelControllers\HotelController::Class, 'index'])->name('hotels');
-
+Route::get('/city-hotels/{city?}', [App\Http\Controllers\HotelControllers\HotelController::Class, 'city_hotels'])->name('city-hotels');
 Route::post('/save-details', [HotelDetails::class, 'save'])->name('save-details');
 
 Route::get('/hotel-rooms/{id}', [App\Http\Controllers\HotelControllers\HotelController::Class, 'hotelRooms'])->name('hotel-rooms');

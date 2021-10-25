@@ -10,15 +10,19 @@ class HomeController extends Controller
     public function index()
     {
         $data = [];
-        $users = Hotel::select("*", DB::raw("count(*) as cities"))
-        ->groupBy('city')
-        ->get();
-        dd($users);
+        // $users = DB::table('hotels')
+        // ->select(DB::raw('count(id) as cities'))
+        // ->where('status', 1)
+        // ->groupBy('city')
+        // ->get();
+        // dd($users);
         //$hotels = Hotel::where('status',1)->groupBy('city')->get();
-        // $hotels= DB::table('hotels')->where('status',1)->groupBy('city')->get();
+        $cities = DB::table('cities')->limit(10)->get();
+  //      dd($cities);
+        $hotels= DB::table('hotels')->where('status',1)->get();
         //  dd($hotels);
         //    dd('got');
-        return view('pages.home',compact('hotels'));
+        return view('pages.home',compact('hotels','cities'));
     }
     function signup_page()
     {

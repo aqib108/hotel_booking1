@@ -81,11 +81,18 @@ class RegisterController extends Controller
             $user_type = 0;
         }
 
-
-        $userImage = $data['file'];
-        $imageName = time() . '-' . $userImage->getClientOriginalName();
-
-        $this->storeImage($userImage, $imageName, 'users');
+        if(isset($data['file']))
+        {
+            $userImage = $data['file'];
+            $imageName = time() . '-' . $userImage->getClientOriginalName();
+    
+            $this->storeImage($userImage, $imageName, 'users');
+        }
+        else
+        {
+            $imageName = 'default.png';
+        }
+        
 
         $user = new User();
         $user->name = $data['name'];

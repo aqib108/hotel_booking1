@@ -353,15 +353,16 @@
             </div>
             <div class="intro__hotels ">
                 <div class="container-fluid p-0">
-                    <div class="swiper-container js-intro-hotels display-none">
+                    <div class="swiper-container js-intro-hotels">
                         <div class="swiper-wrapper">
+                        @foreach($cities as $ct)
                             <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url({{ asset('images/hotels/item-1.jpg') }});">
-                                    <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
+                                <div class="card-intro d-block" style="background-image: url({{ asset('images/cities/'.$ct->title.'.jpg') }});">
+                                    <div class="card-price display-none"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
                                     <div class="card-intro__footer">
-                                        <h4 class="h4 f-primary">Resort Spa Hotel</h4>
-                                        <div class="card-intro__local d-flex align-items-center"><i class="icon icon-label mr-1"></i><span>Thailand</span></div>
-                                        <div class="card-intro__rating">
+                                        <h4 class="h4 f-primary">{{ $ct->title }} ({{ hotelsincity($ct->title); }})</h4>
+                                        <div class="card-intro__local d-flex align-items-center"><img src="https://img.icons8.com/emoji/48/000000/pakistan-emoji.png" style="width: 20px;height: 20px;" /><span>Pakistan</span></div>
+                                        <div class="display-none card-intro__rating">
                                             <select class="js-rating-stat" data-current-rating="5">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -371,100 +372,21 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
                                     <div class="card-hover">
-                                        <h3 class="h3 text-uppercase">Resort Spa Hotel</h3><a class="btn btn-light btn--round card-hover__view" href="category.html">VIEW</a>
+                                        <h3 class="h3 text-uppercase">{{ $ct->title }}</h3><a class="btn btn-light btn--round card-hover__view" href="{{ route('city-hotels',$ct->title) }}">VIEW</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url(img/hotels/item-2.jpg);">
-                                    <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
-                                    <div class="card-intro__footer">
-                                        <h4 class="h4 f-primary">Black Pearl</h4>
-                                        <div class="card-intro__local d-flex align-items-center"><i class="icon icon-label mr-1"></i><span>Cuba</span></div>
-                                        <div class="card-intro__rating">
-                                            <select class="js-rating-stat" data-current-rating="4">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4" selected="selected">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="card-hover">
-                                        <h3 class="h3 text-uppercase">Black Pearl</h3><a class="btn btn-light btn--round card-hover__view" href="category.html">VIEW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url({{ asset('images/hotels/item-3.jpg') }});">
-                                    <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
-                                    <div class="card-intro__footer">
-                                        <h4 class="h4 f-primary">Marsol</h4>
-                                        <div class="card-intro__local d-flex align-items-center"><i class="icon icon-label mr-1"></i><span>Costa Brava, Spain</span></div>
-                                        <div class="card-intro__rating">
-                                            <select class="js-rating-stat" data-current-rating="4">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4" selected="selected">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="card-hover">
-                                        <h3 class="h3 text-uppercase">Marsol</h3><a class="btn btn-light btn--round card-hover__view" href="category.html">VIEW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url({{ asset('images/hotels/item-4.jpg') }});">
-                                    <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
-                                    <div class="card-intro__footer">
-                                        <h4 class="h4 f-primary">Macronissos Village Bungalows</h4>
-                                        <div class="card-intro__local d-flex align-items-center"><i class="icon icon-label mr-1"></i><span>Ayia Napa, Cyprus</span></div>
-                                        <div class="card-intro__rating">
-                                            <select class="js-rating-stat" data-current-rating="4">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4" selected="selected">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="card-hover">
-                                        <h3 class="h3 text-uppercase">Macronissos Village Bungalows</h3><a class="btn btn-light btn--round card-hover__view" href="category.html">VIEW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url({{ asset('images/hotels/item-5.jpg') }});">
-                                    <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
-                                    <div class="card-intro__footer">
-                                        <h4 class="h4 f-primary">Iberotel Aquamarine Resort</h4>
-                                        <div class="card-intro__local d-flex align-items-center"><i class="icon icon-label mr-1"></i><span>Hurghada, Egypt</span></div>
-                                        <div class="card-intro__rating">
-                                            <select class="js-rating-stat" data-current-rating="4">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4" selected="selected">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="card-hover">
-                                        <h3 class="h3 text-uppercase">Iberotel Aquamarine Resort</h3><a class="btn btn-light btn--round card-hover__view" href="category.html">VIEW</a>
-                                    </div>
-                                </div>
-                            </div>
+
+                        @endforeach    
+                        
+                         
                         </div>
                     </div>
-                    <div class="intro__hotels-controls display-none">
-                        <button class="btn btn-primary btn-nav btn-nav--left js-prev" type="button"><i class="fa fa-angle-left"></i></button>
-                        <button class="btn btn-primary btn-nav btn-nav--right js-next" type="button"><i class="fa fa-angle-right"></i></button>
+                    <div class="intro__hotels-controls">
+                        <button class="btn btn-primary btn-nav btn-nav--left js-prev" style="    background: #00274f;" type="button"><i class="fa fa-angle-left"></i></button>
+                        <button class="btn btn-primary btn-nav btn-nav--right js-next" style="    background: #00274f;" type="button"><i class="fa fa-angle-right"></i></button>
                     </div>
                 </div>
             </div>

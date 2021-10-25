@@ -6,6 +6,10 @@ function getcities()
   return DB::table('cities')->get();
   
 }
+function hotelsincity($city)
+{
+  return  DB::table('hotels')->where('city',$city)->get()->count();
+}
 function setting()
 {
     $setting = DB::table('websettings')->first();

@@ -38,4 +38,9 @@ class HotelController extends Controller
               //    dd($reviews);
         return view('pages.roomDetail',compact('room','allrooms','hotelId','reviews'));   
     }
+    function city_hotels($city)
+    {
+        $hotels = DB::table('hotels')->where('city',$city)->paginate(10);  
+        return view('pages.cityhotels',compact('hotels'));     
+    }
 }

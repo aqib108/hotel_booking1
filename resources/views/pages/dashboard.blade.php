@@ -803,7 +803,8 @@ $roomtype = array(
                                             </div>
                                             <div class="form-group">
                                           <label>Hotel Contact No</label>
-                                            <input type="text" class="form-control" name="phone" id="phone" value="<?php if(!empty($profile)) echo $profile->phone;  ?>" />
+                                          <input type="text" class="form-control " data-inputmask="'mask': '0399-9999999'" name="phone" value="<?php if(!empty($profile)) echo $profile->phone;  ?>" placeholder="03XX-XXXXXXX" required=""  type = "number" maxlength = "12" required>
+                                         
                                             </div>
                                             <div class="form-group">
                                           <label>Hotel Email</label>
