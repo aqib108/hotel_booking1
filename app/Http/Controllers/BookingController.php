@@ -24,7 +24,7 @@ class BookingController extends Controller
           $validated = $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
+            
             'from_date' => 'required',
             'to_date' => 'required',
             'address' => 'required',
@@ -39,6 +39,7 @@ class BookingController extends Controller
          $data['address'] = $address;
          $data['from_date'] = $from_date;
          $data['to_date'] = $to_date;
+         $data['status'] = 1;
          $data['booking_date'] = date('y-m-d');
          if($this->model->insert($data))
          {
