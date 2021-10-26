@@ -25,9 +25,9 @@ input[type="file"] {
               <div class="barba-container">
                 <nav class="hotel-nav">
                   <ul class="hotel-nav__menu nav nav-tabs" role="tablist">
-                    <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><span>Profile</span></a>
+                    <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><span>Booking</span></a>
                     </li>
-                    <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#updatepassword" role="tab" aria-controls="updatepassword" aria-selected="true"><span>Update Password</span></a>
+                    <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#updatepassword" role="tab" aria-controls="updatepassword" aria-selected="true"><span>Inbox</span></a>
                     </li>
                     <!-- <li class="nav-item d-flex col-12 col-sm p-0"><a class="nav-link" data-toggle="tab" href="#hotelAccommodation" role="tab" aria-controls="hotelAccommodation" aria-selected="true"><span>Accommodation conditions</span></a>
                     </li>
@@ -41,7 +41,8 @@ input[type="file"] {
                     <h3>Booking</h3>
                       <hr>
                       <div class="row">
-                        <div class="col-12 col-md-8 d-flex">
+                        <div class="col-12 col-md-12 d-flex">
+                          <div class="hotel__intro hotel-card w-100">
                           <div class="hotel__intro hotel-card w-100">
                              
                               <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -49,6 +50,7 @@ input[type="file"] {
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
+      <th scope="col">Hotel Name</th>
       <th scope="col">Phone</th>
       <th scope="col">Cnic</th>
       <th scope="col">Address</th>
@@ -57,7 +59,7 @@ input[type="file"] {
       <th scope="col">From Date</th>
       <th scope="col">To Date</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -66,6 +68,7 @@ input[type="file"] {
     <tr>
       <th scope="row">{{ $i++ }}</th>
       <td>{{ $bk->name }}</td>
+      <td>{{ getspecficedata($bk->hotel_id,'name','id','hotels') }}</td>
       <td>{{ $bk->phone }}</td>
       <td>{{ $bk->cnic }}</td>
       <td>{{ $bk->address }}</td>
@@ -88,42 +91,13 @@ input[type="file"] {
       <span class="badge badge-dark">Compeleted</span>
       @endif
       </td>
-      <td>
-      <ul style="display: flex;">
-          <!-- <li style="    margin-right: 10px;">
-          <button class="btn-xs btn-outline" style="cursor: pointer;"><i class="fa fa-trash"></i></button>
-          </li> -->
-          <li>
-              <?php
-      $status = array(
-          0=>'Pending',
-          1=>'Approved',
-          2=>'On Going',
-          3=>'Compeleted',
-          4=>'Cancel'
-    
-          )
-              ?>
-          <select onchange="change_booking_status(this.value,{{$bk->id}})" style="border: none;" claas="form-control">
-          @foreach($status as $key=>$value)
-          @if($bk->status==$key)
-          <option selected value="{{$key}}">{{ $value }}</option>
-          @else
-          <option  value="{{$key}}">{{ $value }}</option>
-          @endif
-          @endforeach
-          </select>
-          </li>
-      </ul>
      
-      
-    
-    </td>
     </tr>
 @endforeach
   </tbody>
 </table>
       </div>
+                        
                             
                           </div>
                         </div>
@@ -136,12 +110,12 @@ input[type="file"] {
                   <div class="tab-pane" id="updatepassword" role="tabpanel">
                  
                     <section>
-                     <h3>Update Password</h3>
+                     <h3>Inbox</h3>
                       <hr>
                       <div class="row">
                         <div class="col-12 col-md-8 d-flex">
                           <div class="hotel__intro hotel-card w-100">
-                         
+                           
                             
                           </div>
                         </div>
@@ -169,6 +143,11 @@ input[type="file"] {
         /***
          * This code is for multiple images upload gallery
          * */
+         $(document).ready(function(){
+            $(document).ready(function() {
+    $('#example').DataTable();
+} );
+        });
 
 
         $(function () {
