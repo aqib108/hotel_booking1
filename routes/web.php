@@ -106,6 +106,8 @@ Route::get('/profile', function () {
     return view('pages.profile',compact('data'));
 })->name('profile');
 Route::post('/update-profile-image', [ProfileController::class, 'updateimage'])->name('update-profile-image');
+Route::post('/update-profile-data', [ProfileController::class, 'updatedata'])->name('update-profile-data');
+Route::post('/update-profile-password', [ProfileController::class, 'updatepassword'])->name('update-profile-password');
 //end of profile updates
 
 ///signup route

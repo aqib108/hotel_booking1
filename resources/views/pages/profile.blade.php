@@ -52,24 +52,24 @@ input[type="file"] {
     <input type="file" size="60" id="fileupload" >
     </label> 
                               </div>
-                          <form method="post" action="{{ route('add-review') }}" enctype="multipart/form-data" >
+                          <form method="post" action="{{ route('update-profile-data') }}" enctype="multipart/form-data" >
                                         @csrf
                                        
                                             <div class="form-group">
                                           <label>Name</label>
-                                            <input type="text" class="form-control" name="name" required id="name"  />
+                                            <input type="text" class="form-control" value="{{$data->name ?? ''}}" name="name" required id="name"  />
                                             
                                             </div>
                                             <div class="form-group">
                                           <label>phone</label>
-                                            <input type="text" class="form-control" name="phone" required id="phone"  />
+                                            <input type="text" class="form-control" value="{{$data->phone ?? ''}}" name="phone" required id="phone"  />
                                             
                                             </div>
                                             
                                            
                                             <div class="form-group">
                                           <label>Address</label>
-                                            <input type="text" class="form-control" name="address" required id="address"  />
+                                            <input type="text" class="form-control" name="address" value="{{$data->address ?? ''}}" required id="address"  />
                                             
                                             </div>
                                             
@@ -98,24 +98,21 @@ input[type="file"] {
                       <div class="row">
                         <div class="col-12 col-md-8 d-flex">
                           <div class="hotel__intro hotel-card w-100">
-                          <form method="post" action="{{ route('add-review') }}" enctype="multipart/form-data" >
+                          <form method="post" action="{{ route('update-profile-password') }}" enctype="multipart/form-data" >
                                         @csrf
                                        
                                             <div class="form-group">
-                                          <label>Name</label>
-                                            <input type="text" class="form-control" name="name" required id="name"  />
+                                          <label>Password</label>
+                                            <input type="password" class="form-control" name="password" required id="password"  />
                                             
                                             </div>
                                            
                                             
                                             <div class="form-group">
-                                          <label>Email (optional)</label>
-                                            <input type="email" class="form-control" name="email" id="email" value="<?php if(!empty($profile)) echo $profile->email;  ?>" />
+                                          <label>Confirm Password </label>
+                                               <input type="password" class="form-control" name="confirmed" required id="confirm_password"  />
                                             </div>
-                                            <div class="form-group">
-                                          <label>Comment</label>
-                                            <textarea class="form-control" required name="comment"></textarea>
-                                            </div>
+                                           
                                         
                                             
                                        

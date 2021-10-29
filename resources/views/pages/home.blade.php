@@ -106,9 +106,9 @@
                                             <label class="label-text">Place or name of the hotel</label>
                                             <div class="d-flex"><span class="select-local d-flex"> <i style="font-size: 18px;" class="p-1 fas fa-map-marker-alt  text-secondary"></i>
                               <select class="select2 js-select-locality" name="search_hotel" data-placeholder="Enter here a place or hotel">
-                              @foreach($cities as $ct)
-                                  <option value="{{$ct->title}}">{{$ct->title}}</option>
-                                  @endforeach
+                                @foreach($cities as $ct)
+                             <option value="{{$ct->title}}">{{$ct->title}}</option>
+                                @endforeach
                               </select></span>
                                             </div>
                                         </div>

@@ -54,8 +54,11 @@ class DashboardController extends Controller
             else
             {
 
-
-                return view('pages.userDashboard', ['data' => $data]);
+                $booking = DB::table('bookings as bk')
+                ->join('rooms as ro','ro.id','bk.room_id')
+                ->where('bk.user_id',Auth::user()->id)
+                ->get(['bk.*','ro.name as room_title','ro.room_type','ro.room_price']);
+                return view('pages.userDashboard',compact('booking'));
             }
 
         }
