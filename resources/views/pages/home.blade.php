@@ -106,11 +106,9 @@
                                             <label class="label-text">Place or name of the hotel</label>
                                             <div class="d-flex"><span class="select-local d-flex"> <i style="font-size: 18px;" class="p-1 fas fa-map-marker-alt  text-secondary"></i>
                               <select class="select2 js-select-locality" name="search_hotel" data-placeholder="Enter here a place or hotel">
-                                <option value="Resort Spa Hotel">Resort Spa Hotel</option>
-                                <option value="Black Pearl">Black Pearl</option>
-                                <option value="Marsol">Marsol</option>
-                                <option value="Macronissos Village Bungalows">Macronissos Village Bungalows</option>
-                                <option value="Iberotel Aquamarine Resort">Iberotel Aquamarine Resort</option>
+                              @foreach($cities as $ct)
+                                  <option value="{{$ct->title}}">{{$ct->title}}</option>
+                                  @endforeach
                               </select></span>
                                             </div>
                                         </div>
@@ -242,11 +240,9 @@
                                                     <label class="label-text">Place or name of the hotel</label>
                                                     <div class="d-flex"><span class="select-local d-flex"><i class="icon icon-label mr-2 text-secondary"></i>
                                   <select class="select2 js-select-locality" name="search_hotel" data-placeholder="Enter here a place or hotel">
-                                    <option value="Resort Spa Hotel">Resort Spa Hotel</option>
-                                    <option value="Black Pearl">Black Pearl</option>
-                                    <option value="Marsol">Marsol</option>
-                                    <option value="Macronissos Village Bungalows">Macronissos Village Bungalows</option>
-                                    <option value="Iberotel Aquamarine Resort">Iberotel Aquamarine Resort</option>
+                                  @foreach($cities as $ct)
+                                  <option value="{{$ct->title}}">{{$ct->title}}</option>
+                                  @endforeach
                                   </select></span>
                                                     </div>
                                                 </div>
@@ -268,13 +264,9 @@
                                                     <label class="label-text">Flying to</label>
                                                     <div class="d-flex"><span class="select-local d-flex"><i class="icon icon-label mr-2 text-secondary"></i>
                                   <select class="select2 js-select-locality" name="flying_to" data-placeholder="Orly airport">
-                                    <option value="Gatwick Airport">Gatwick Airport</option>
-                                    <option value="Saskatoon John G. Diefenbaker International Airport">Saskatoon John G. Diefenbaker International Airport</option>
-                                    <option value="London Airport">London Airport</option>
-                                    <option value="Fort St John Airport">Fort St John Airport</option>
-                                    <option value="Rimouski Airport">Rimouski Airport</option>
-                                    <option value="Sioux Lookout Airport">Sioux Lookout Airport</option>
-                                    <option value="Whale Cove Airport">Whale Cove Airport</option>
+                                  @foreach($cities as $ct)
+                                  <option value="{{$ct->title}}">{{$ct->title}}</option>
+                                  @endforeach
                                   </select></span>
                                                     </div>
                                                 </div>
