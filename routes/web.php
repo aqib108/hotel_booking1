@@ -11,6 +11,9 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyTestMail;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,15 @@ use Illuminate\Support\Facades\DB;
     return view('pages.home');
 });*/
 ///send email
+
+    Route::get('sendemail', function () {
+   
+        $data = array(
+            'subject' =>'laravel test', 
+            'message'=> 'Hello aqib' ,
+             );
+            Mail::to('mehmood7455@gmail.com')->send(new MyTestMail($data));
+      });
 Route::get('send-email', function () {
    
     $data = array('name'=>"aqib");
@@ -80,9 +92,34 @@ echo 'error';
     //      $message->from('aqibdev8@gmail.com','Virat Gandhi');
     //   });
 });
+Route::get('/verifyemail/{token}', function ($token) {
+    if ( ! $token)
+    {
+        return  redirect('login')->with('flash-error','Email Verification Token not provided!');
+    }
 
+
+    $user = User::where('email_token',$token)->first();
+
+
+    if ( ! $user)
+    {
+        return  redirect('login')->with('flash-error','Invalid Email Verification Token!');
+    }
+
+    $user->verified = 1;
+
+    if ($user->save()) {
+
+    echo 'successfully verify';
+        //    return view('email_template.emailconfirm',['user'=>$user]);
+
+    }
+
+  })->name('verifyemail');
+// Route::get('/verifyemail/{token}',[App\Http\Controllers\Auth\RegisterController::Class, 'verify'])->name('verifyemail');
 Route::get('/', [App\Http\Controllers\HomeController::Class, 'index'])->name('home');
-
+Route::post('/search', [App\Http\Controllers\HomeController::Class, 'search_hotel'])->name('search');
 Route::get('/about-us', [App\Http\Controllers\HomeController::Class, 'aboutUS'])->name('about-us');
 
 Route::get('/contact-us', [App\Http\Controllers\HomeController::Class, 'ContactUs'])->name('contact-us');

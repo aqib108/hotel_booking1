@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
+use Mail;
+use App\Mail\EmailVerification;
 
 class RegisterController extends Controller
 {
@@ -103,6 +105,7 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->image = $imageName;
         $user->status = 1;
+        $user->email_token = bin2hex(openssl_random_pseudo_bytes(30));
         $user->save();
 
         if($user->save())
@@ -140,7 +143,9 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
+        $email = new EmailVerification($user);
 
+        Mail::to($user->email)->send($email);
         $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
@@ -150,6 +155,32 @@ class RegisterController extends Controller
         return $request->wantsJson()
             ? new JsonResponse([], 201)
             : redirect('/');
+    }
+    public function verify($token)
+    {
+        
+        if ( ! $token)
+        {
+            return  redirect('login')->with('flash-error','Email Verification Token not provided!');
+        }
+
+
+        $user = User::where('email_token',$token)->first();
+
+
+        if ( ! $user)
+        {
+            return  redirect('login')->with('flash-error','Invalid Email Verification Token!');
+        }
+
+        $user->verified = 1;
+
+        if ($user->save()) {
+
+            return view('email_template.emailconfirm',['user'=>$user]);
+
+        }
+
     }
 
 

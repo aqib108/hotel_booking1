@@ -66,4 +66,10 @@ class HomeController extends Controller
         // });
         return back()->with('Message', 'Successfully Submit Your Request.');
     }
+    function search_hotel(Request $request)
+    {
+         extract($request->all());
+         $hotels = DB::table('hotels')->where('city',$city)->paginate(10);  
+         return view('pages.cityhotels',compact('hotels'));     
+    }
 }

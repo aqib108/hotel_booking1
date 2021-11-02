@@ -1,16 +1,15 @@
+
 <?php
-  
 namespace App\Mail;
   
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-  
-class MyTestMail extends Mailable
+ 
+class Email extends Mailable
 {
     use Queueable, SerializesModels;
-  
     public $data;
     /**
      * Create a new message instance.
@@ -24,7 +23,7 @@ class MyTestMail extends Mailable
         $this->subject = $data['subject'];
     
     }
-  
+ 
     /**
      * Build the message.
      *

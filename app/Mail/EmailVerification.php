@@ -1,30 +1,28 @@
 <?php
-  
+
 namespace App\Mail;
-  
+
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-  
-class MyTestMail extends Mailable
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
-  
-    public $data;
+
+    protected $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($user)
     {
-        //
-        $this->data = $data;
-        $this->subject = $data['subject'];
-    
+        $this->user = $user;
     }
-  
+
     /**
      * Build the message.
      *
@@ -32,6 +30,6 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->subject)->view('demomail')->with('data',$this->data);
+        return $this->markdown('email_template.verification-email')->with(['email_token' => $this->user->email_token]);
     }
 }
