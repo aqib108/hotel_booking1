@@ -50,6 +50,26 @@ Route::post('/email/verification-notification', function (Request $request) {
 //end
 
 
+///send email
+
+    Route::get('sendemail', function () {
+   
+        $data = array(
+            'subject' =>'laravel test', 
+            'message'=> 'Hello aqib' ,
+             );
+            Mail::to('mehmood7455@gmail.com')->send(new MyTestMail($data));
+      });
+Route::get('send-email', function () {
+   
+    $data = array('name'=>"aqib");
+        Mail::send(['text'=>'mail'], $data, function($message) {
+           $message->to('mehmood7455@gmail.com', 'Tutorials Point')->subject
+              ('Laravel Basic Testing Mail');
+           $message->from('aqibdev8@gmail.com','Virat Gandhi');
+        });
+  });
+
 //end of send email
 Route::get('import-cities', function () {
   $cities = array(
@@ -86,9 +106,39 @@ else
 {
 echo 'error';
 }
- 
+    // $data = array('name'=>"aqib");
+   
+    //   Mail::send(['text'=>'mail'], $data, function($message) {
+    //      $message->to('mehmood7455@gmail.com', 'Tutorials Point')->subject
+    //         ('Laravel Basic Testing Mail');
+    //      $message->from('aqibdev8@gmail.com','Virat Gandhi');
+    //   });
 });
+// Route::get('/verifyemail/{token}', function ($token) {
+//     if ( ! $token)
+//     {
+//         return  redirect('login')->with('flash-error','Email Verification Token not provided!');
+//     }
 
+
+//     $user = User::where('email_token',$token)->first();
+
+
+//     if ( ! $user)
+//     {
+//         return  redirect('login')->with('flash-error','Invalid Email Verification Token!');
+//     }
+
+//     $user->verified = 1;
+
+//     if ($user->save()) {
+
+//     echo 'successfully verify';
+//         //    return view('email_template.emailconfirm',['user'=>$user]);
+
+//     }
+
+//   })->name('verifyemail');
 
 
 
