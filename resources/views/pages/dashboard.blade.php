@@ -79,52 +79,40 @@ else
                                         <div class="container">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-primary">
+                <div class="card-box bg-primary text-white">
                     <div class="inner p-2">
-                        <h3> 13436 </h3>
-                        <p> Student Strength </p>
+                        <h3>@if (!empty($profile)) {{totalActiveroom($profile->id)}} @else 0 @endif</h3>
+                        <p> Active Room </p>
                     </div>
-                    <div class="icon p-2">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                    </div>
-                    <a href="#" class="card-box-footer text-white">View More <i class="fa fa-arrow-circle-right"></i></a>
+                
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-success">
+                <div class="card-box bg-success text-white">
                     <div class="inner p-2">
-                        <h3> ₹185358 </h3>
-                        <p> Today’s Collection </p>
+                        <h3>@if (!empty($profile)) {{gettodaybooking($profile->id)}} @else 0 @endif </h3>
+                        <p> Today Booking </p>
                     </div>
-                    <div class="icon p-2 text-white">
-                        <i class="fa fa-money" aria-hidden="true"></i>
-                    </div>
-                    <a href="#" class="card-box-footer text-white">View More <i class="fa fa-arrow-circle-right"></i></a>
+                   
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-warning">
+                <div class="card-box bg-warning text-white">
                     <div class="inner p-2">
-                        <h3> 5464 </h3>
-                        <p> New Admissions </p>
+                        <h3>@if (!empty($profile)) {{gettotalbooking($profile->id)}}@else 0 @endif </h3>
+                        <p>Total Booking</p>
                     </div>
-                    <div class="icon p-2">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    </div>
-                    <a href="#" class="card-box-footer text-white">View More <i class="fa fa-arrow-circle-right"></i></a>
+               
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-danger">
+                <div class="card-box bg-danger text-white">
                     <div class="inner p-2">
-                        <h3> 723 </h3>
-                        <p> Faculty Strength </p>
+                        <h3>@if (!empty($profile)) 723 @else 0 @endif {{Config::get('constants.options.currency')}} </h3>
+                        <p> Revenue </p>
                     </div>
-                    <div class="icon p-2 text-white">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="#" class="card-box-footer text-white">View More <i class="fa fa-arrow-circle-right"></i></a>
+                   
                 </div>
             </div>
         </div>
@@ -132,14 +120,8 @@ else
                                       
                                     </div>
                                     <div class="hotel-card">
-                                        <h4 class="mb-4">Several reasons to choose accommodation option Hotel Ravena</h4>
-                                        <ul class="hotel-options row">
-                                            <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>Reasonable prices</span></li>
-                                            <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>Staff speaks 3 languages</span></li>
-                                            <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>One of the best options chosen by guests in the city of Milan</span></li>
-                                            <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>Manage reservations online</span></li>
-                                            <li class="col-12 col-sm-6 d-flex mb-3"><i class="icon icon-check-button"></i><span>Free parking</span></li>
-                                        </ul>
+                                        <h4 class="mb-4">Today Booking</h4>
+                                       
                                     </div>
                                 </section>
                             </div>

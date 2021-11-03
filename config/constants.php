@@ -10,6 +10,9 @@ return [
     'user_type'=>[
         'HOTEL'=>'3',
         'USER'=>'0',
+    ],
+    'options'=>[
+        'currency'=>'RS'
     ]
 ];
 

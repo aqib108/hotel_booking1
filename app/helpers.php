@@ -1,6 +1,25 @@
 <?php
 use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+
+//hote dashboard 
+function gettotalbooking($hotel_id)
+{
+      return DB::table('bookings')->where('hotel_id',$hotel_id)->get()->count();
+}
+function gettodaybooking($hotel_id)
+{
+ // return date('Y-m-d');
+  return DB::table('bookings')->where(['hotel_id'=>$hotel_id,'booking_date'=>date('Y-m-d')])->get()->count();
+}
+function totalActiveroom($hotel_id)
+{
+ // return date('Y-m-d');
+  return DB::table('bookings')->where(['hotel_id'=>$hotel_id,'status'=>1])->get()->count();
+}
+
+//end of hotel dashboard
+
 function getcities()
 {
   return DB::table('cities')->get();
