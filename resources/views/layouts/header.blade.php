@@ -94,7 +94,7 @@
 
     <button class="btn-toggle btn btn-light d-lg-none btn-toggle-nav" type="button" data-toggle="collapse" data-target="#navPanel"><span class="icon-bar"></span></button>
     <nav class="main-nav d-flex collapse d-lg-block" id="navPanel">
-        <div class="main-nav__container d-flex">
+        <div class="main-nav__container d-flex bg-style">
             <div class="container bg-style">
                 <div class="d-lg-none">
 
