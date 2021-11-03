@@ -27,7 +27,7 @@
                 
                     <div class="col-12 col-md col-lg-3 d-flex">
                         <a class="navbar-logo d-inline-flex align-items-center" href="{{ URL::to('/') }}">
-                            <img class="img-fluid mr-3" src="{{ asset('uploads/logo').'/'.$setting->logo }}" alt="#"/>
+                            <img class="img-fluid mr-3" style="height: 50px !important;" src="{{ asset('uploads/logo').'/'.$setting->logo }}" alt="#"/>
                             
                         </a>
                     </div>
@@ -65,7 +65,10 @@
                         <div class="col col-lg-3 text-right  bg-style ">
                             <div class="header-dropdown-menu">
                                 <!-- <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-caret-down"></i></button> -->
-                                <button onclick="myFunction()" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-user"></i></button>
+                                <button onclick="myFunction()" style="    background: transparent;
+    color: white;
+    border: 1px solid;
+" class="dropbtn">{{ Auth::user()->name }} &nbsp; &nbsp;<i class="fa fa-user"></i></button>
 
                                 <div id="myDropdown" class="dropdown-content">
                                     <a href="{{ route('profile') }}"><i class="fa fa-user"></i> &nbsp; Profile</a>
