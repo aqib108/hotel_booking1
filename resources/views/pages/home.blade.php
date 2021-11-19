@@ -106,7 +106,7 @@
                                         <div class="form-group col-12 col-md-6 col-lg-4 col-xl-3">
                                             <label class="label-text">Place or name of the hotel</label>
                                             <div class="d-flex"><span class="select-local d-flex"> <i style="font-size: 18px;" class="p-1 fas fa-map-marker-alt  text-secondary"></i>
-                              <select class="select2 js-select-locality" name="city" data-placeholder="Enter here a place or hotel">
+                              <select class="select2 js-select-locality" name="citys" data-placeholder="Enter here a place or hotel">
                                 @foreach($cities as $ct)
                              <option value="{{$ct->title}}">{{$ct->title}}</option>
                                 @endforeach

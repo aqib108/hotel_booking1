@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use Auth;
+use App\Mail\PlaceBookingEmail;
+use Mail;
 class BookingController extends Controller
 {
     //
@@ -43,6 +45,7 @@ class BookingController extends Controller
          $data['booking_date'] = date('y-m-d');
          if($this->model->insert($data))
          {
+            $this->SendBookingEmail($data);   
             return back()->with('Message', 'Successfully Send Your Booking Request Waiting Confirmatiom');
         }
         else
@@ -52,6 +55,18 @@ class BookingController extends Controller
          
 
 
+    }
+    function SendBookingEmail($data)
+    {
+        $data1 = array(
+            'subject' => 'Pakistan Booking Hotel Booking', 
+            'hotel_Name'=>getspecficedata($data['hotel_id'],'name','id','hotels'),
+            'room_type'=>getspecficedata($data['room_id'],'room_type','id','rooms'),
+            'per_night'=>getspecficedata($data['room_id'],'room_price','id','rooms'),
+            'from_date'=>$data['from_date'],
+            'to_date'=>$data['to_date']
+           );
+        return  Mail::to(Auth::user()->email)->send(new PlaceBookingEmail($data1));
     }
     function change_status(Request $request)
     {

@@ -78,12 +78,12 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         
-      if (Auth::user()->user_type == -1)
-      {
-        return 'Admindashbord';  // admin dashboard path
-      } else {
-        return 'home';  // member dashboard path
-      }
+      // if (Auth::user()->user_type == -1)
+      // {
+      //   return 'Admindashbord';  // admin dashboard path
+      // } else {
+      //   return 'home';  // member dashboard path
+      // }
     }
 
 }

@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Hotel;
 use App\Models\Booking;
 use DB;
+use App\Jobs\EmailMarketing;
 class AdminController extends Controller
 {
     //
@@ -83,6 +84,36 @@ function smsmarketing()
        
         return view('admin.sms_marketing',compact('title','data','webset'));
 }
+///email marketing
+function emailmarketing()
+{
+    $title = 'Email Marketing';
+    $webset = array();
+        
+        $data = Hotel::all();
+       
+        return view('admin.email_marketing',compact('title','data','webset'));
+}
+
+///end of email marketing
+///send marketing email
+function sendemailmarketing(Request $request)
+{
+    extract($request->all());
+    $details['email'] =  $emails;
+    $details['subject'] = $subject;
+    $details['message'] = $message;
+    
+
+    dispatch(new App\Jobs\EmailMarketing($details));
+    return back()->with('Message', 'Successfully Posted Emails');
+
+}
+
+
+//end of
+
+
 ///admin booking
 function booking()
 {

@@ -118,8 +118,8 @@
               </p>
             </a>
           </li>
-          <li class="myhide nav-item">
-            <a href="/viewcustomer"  class="nav-link <?php  //echo //getActive('viewcustomer'); ?>">
+          <li class=" nav-item">
+          <a href="{{ route('email-marketing') }}"  class="nav-link <?php  echo getActive('email-marketing'); ?>">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
                 Email Marketing

@@ -31,6 +31,7 @@ use Illuminate\Http\Request;
     return view('pages.home');
 });*/
 
+
 ///email verification routes
 Route::get('/email/verify', function () {
     return view('auth.verify');
@@ -186,6 +187,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/savesetting', [Setting::class, 'save_web_setting'])->name('savesetting');
     Route::post('/save-social', [Setting::class, 'save_socail_setting'])->name('save-social');
     Route::get('/sms-marketing', [AdminController::class, 'smsmarketing'])->name('sms-marketing');
+    Route::get('/email-marketing', [AdminController::class, 'emailmarketing'])->name('email-marketing');
+    Route::post('/send-email-marketing', [AdminController::class, 'sendemailmarketing'])->name('send-email-marketing');
     //end of website setting
     ///admin booking
     Route::get('/hotels-booking', [AdminController::class, 'booking'])->name('hotels-booking');
