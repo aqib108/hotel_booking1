@@ -14,7 +14,7 @@
     <!-- Add to homescreen for Chrome on Android-->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Looking for something amazing?">
-    <link rel="icon" sizes="192x192" href="{{ asset('images/touch/chrome-touch-icon-192x192.png') }}">
+    <link rel="icon" sizes="192x192" href="{{ asset('images/touch/pakistan.png') }}">
     <!-- Add to homescreen for Safari on iOS-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">

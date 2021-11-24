@@ -3,12 +3,12 @@
             <div class="over"></div>
             <div class="swiper-container js-intro-slider-bg">
                 <div class="swiper-wrapper">
-                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-5.jpg') }}" alt="#"></div>
-                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>    
-                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-2.jpg') }}" alt="#"></div>
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>    
+                <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
                     
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-4.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
                   
                 </div>
             </div>
@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-10 mx-auto">
                                 <h4 class="h4 intro__caption prlx-scroll">City tours / tour tickets / tour guides</h4>
-                                <h1 class="h1 intro__title prlx-scroll">more tours</h1>
+                                <h1 class="h1 intro__title prlx-scroll">more tours by us</h1>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,17 @@
 <style>
 .bg-style{
-    background: #003580 !important;
+    background: #2E3F6E !important;
 }
+.qty .ui-spinner-input{
+border: 1px solid gray !important;
+}
+.card-hover{
+    background-color: #152B66 !important;
+}
+.card-intro__footer{
+    background-color: #152B66 !important;
+}
+
 .mbtn{
   background: #003580;
     width: 50% !important;

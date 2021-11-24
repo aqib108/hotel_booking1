@@ -55,7 +55,7 @@ $socail = socail_setting();
     </div>
     <div class="page-footer__copyright text-center">
         <div class="container">
-            <div class="hr"></div>YourTravelWorld ltd. All rights reserved.<br/><a class="text-light text-uppercase" href="#">Copyright by {{$setting->title}}
+            <div class="hr"></div>{{$setting->title}} ltd. All rights reserved.<br/><a class="text-light text-uppercase" href="#">Copyright by {{$setting->title}}
                 <script>document.write(new Date().getFullYear());</script></a>
         </div>
     </div>

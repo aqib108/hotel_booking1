@@ -7,16 +7,16 @@
             <div class="over"></div>
             <div class="swiper-container js-intro-slider-bg">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-2.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-1.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-4.jpg') }}" alt="#"></div>
-                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/item-5.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
+                    <div class="swiper-slide"><img class="img-cover" src="{{ asset('images/intro/background.jpg') }}" alt="#"></div>
                 </div>
             </div>
         </div>
         <div class="intro__desc js-intro-slider-desc swiper-container">
-            <div class="swiper-wrapper align-items-center">
+            <div class="swiper-wrapper align-items-center" style="display: none">
                 <div class="swiper-slide">
                     <div class="container w-100 text-center">
                         <div class="row">
@@ -118,14 +118,14 @@
                                                 <div class="d-inline-block">
                                                     <label class="label-text">Check  in date</label>
                                                     <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary"></i>
-                                                        <input class="form-control js-input-date hidden " id="hotelDate1" type="text" name="hotel_from" required="required"/>
+                                                        <input class="form-control js-input-date hidden bg-style" id="hotelDate1" type="text" name="hotel_from" required="required"/>
                                                         <label class="form-control date" for="hotelDate1"></label>
                                                     </div>
                                                 </div><i class="bullet mx-4"></i>
                                                 <div class="d-inline-block">
                                                     <label class="label-text">Check out date</label>
                                                     <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary"></i>
-                                                        <input class="form-control js-input-date hidden " id="hotelDateTo1" type="text" name="hotel_to" required="required"/>
+                                                        <input class="form-control js-input-date hidden bg-style" id="hotelDateTo1" type="text" name="hotel_to" required="required"/>
                                                         <label class="form-control date" for="hotelDateTo1"></label>
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12 col-xl-2 d-flex">
-                                            <button class="btn btn-secondary btn--round align-self-center" type="submit">Search
+                                            <button class="btn btn-secondary btn--round align-self-center bg-style" type="submit">Search
                                             </button>
                                         </div>
                                     </div>
