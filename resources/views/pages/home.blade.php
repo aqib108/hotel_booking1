@@ -2,6 +2,45 @@
 
 
 @section('mainContent')
+<style>
+.myblog {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
     <section class="intro d-flex flex-column load">
         <div class="intro__bg js-intro-bg">
             <div class="over"></div>
@@ -413,27 +452,41 @@
                 <!-- Hotel Section End -->
             </div>
 
-            <div class="row">
-                <div class="col-12 text-center">
+            <div class="row mt-5" >
+                {{-- <div class="col-12 text-center">
                     <div class="section-header">
                         <h2 class="h2">The opportunities we provide</h2>
                         <div class="section-header__stars mb-3"><i class="fa fa-star"></i><i class="fa fa-star center"></i><i class="fa fa-star"></i></div>
                         <p class="fz-norm mb-0"><em>Explore the features and benefits of our service</em></p>
                     </div>
-                </div>
+                </div> --}}
 
-                <!-- Services Section Start -->
-                @for($i=0; $i<6; $i++)
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex mb-4">
-                        @include('layouts.servicesDesign')
+                <!-- blog section -->
+            
+                    <div class="col-12 col-sm-6 col-lg-12 d-flex myblog">
+                        
+
+  <img src="{{ asset('images/blog/main_blog.jpg') }}" alt="Snow" style="width:100%; height: 40%">
+  {{-- <div class="bottom-left">Bottom Left</div>
+  <div class="top-left">Top Left</div>
+  <div class="top-right">Top Right</div>
+  <div class="bottom-right">Bottom Right</div> --}}
+  <div class="centered">
+  
+  <h3>Find The Best Accommodation <br> For Your Next Trip</h3>
+  <div class="form-group">
+  <button class="btn btn-secondary btn--round align-self-center bg-style" type="submit"><i class="fa fa-hotel"></i> Start Booking
+  </button>
+  </div>
+  </div>
+  
                     </div>
-                @endfor
+        
                 <div class="display-none col-12 page-section__more text-center">
                     <button class="btn btn-secondary btn--round btn-load" type="button">Show more<i class="fa fa-spin"></i>
                     </button>
                 </div>
                 <!-- Services Section End -->
-
             </div>
         </div>
         <button class="btn btn-primary btn-nav btn-nav--up js-scroll-up bg-style" type="button"><i class="fa fa-angle-up"></i></button>
