@@ -104,8 +104,8 @@ border: 1px solid gray !important;
         </div>
     </div>
 
-
-    <button class="btn-toggle btn btn-light d-lg-none btn-toggle-nav" type="button" data-toggle="collapse" data-target="#navPanel"><span class="icon-bar"></span></button>
+<!-- i was work on the style in button and removed btn and btn-light class -->
+    <button class="btn-toggle  d-lg-none btn-toggle-nav" style="color: white; margin-top: -37px; margin-left: 371px;     font-size: 20px;" type="button" data-toggle="collapse" data-target="#navPanel"><span style="color: white" ><i class="fa fa-bars" aria-hidden="true"></i></span></button>
     <nav class="main-nav d-flex collapse d-lg-block" id="navPanel">
         <div class="main-nav__container d-flex bg-style">
             <div class="container bg-style">

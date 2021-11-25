@@ -3,6 +3,9 @@
 
 @section('mainContent')
 <style>
+.myicon{
+    color: #19378A !important;
+}
 .myblog {
   position: relative;
   text-align: center;
@@ -144,7 +147,7 @@
                                     <div class="row">
                                         <div class="form-group col-12 col-md-6 col-lg-4 col-xl-3">
                                             <label class="label-text">Place or name of the hotel</label>
-                                            <div class="d-flex"><span class="select-local d-flex"> <i style="font-size: 18px;" class="p-1 fas fa-map-marker-alt  text-secondary"></i>
+                                            <div class="d-flex"><span class="select-local d-flex"> <i style="font-size: 18px;" class="p-1 fas fa-map-marker-alt  text-secondary myicon"></i>
                               <select class="select2 js-select-locality" name="citys" data-placeholder="Enter here a place or hotel">
                                 @foreach($cities as $ct)
                              <option value="{{$ct->title}}">{{$ct->title}}</option>
@@ -156,14 +159,14 @@
                                             <div class="form-group-date text-nowrap text-center">
                                                 <div class="d-inline-block">
                                                     <label class="label-text">Check  in date</label>
-                                                    <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary"></i>
+                                                    <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary myicon" ></i>
                                                         <input class="form-control js-input-date hidden bg-style" id="hotelDate1" type="text" name="hotel_from" required="required"/>
                                                         <label class="form-control date" for="hotelDate1"></label>
                                                     </div>
                                                 </div><i class="bullet mx-4"></i>
                                                 <div class="d-inline-block">
                                                     <label class="label-text">Check out date</label>
-                                                    <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary"></i>
+                                                    <div class="input-date-group position-relative"><i class=" far fa-calendar-alt text-secondary myicon"></i>
                                                         <input class="form-control js-input-date hidden bg-style" id="hotelDateTo1" type="text" name="hotel_to" required="required"/>
                                                         <label class="form-control date" for="hotelDateTo1"></label>
                                                     </div>
