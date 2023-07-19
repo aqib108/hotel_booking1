@@ -11,7 +11,6 @@ class DashboardController extends Controller
 {
     public function dashboard(Request $request)
     {
-        // dd('hlo');
         if(Auth::check())
         {
             $data = [];
@@ -48,7 +47,6 @@ class DashboardController extends Controller
                 $data['rooms'] = $rooms;
                 $data['reviews'] = $reviews;
                 $data['profile'] = Hotel::where('user_id',Auth::user()->id)->get();
-                //  dd($rooms->facilities);
                 return view('pages.dashboard', ['data' => $data]);
             }
             else
